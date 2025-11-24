@@ -1,0 +1,33 @@
+.circleLoader {
+  position: fixed; /* поверх всього */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* на весь екран */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* поверх всіх елементів */
+}
+
+.percent {
+  position: absolute;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 80px;
+  color: #0b0b0b;
+}
+
+circle {
+  fill: none;
+  stroke: #0d0d0d;
+  stroke-width: 1;
+  stroke-dasharray: 1243; /* довжина кола */
+  stroke-dashoffset: 186; /* 85% заповнення */
+}
+
+.circleLoader svg {
+  width: 398px;
+  height: 398px;
+  transform: rotate(-90deg);
+}
