@@ -1,0 +1,118 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.passwordInputContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.eyeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.eyeIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 16px 266px 16px 16px;
+  width: auto;
+  height: auto;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.8);
+}
+
+input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border: 1px solid #f6b83d;
+  box-shadow: 0 0 4px rgba(247, 154, 5, 0.999);
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btnForm {
+  border: none;
+  border-radius: 30px;
+  padding: 16px 157px;
+  width: 424px;
+  height: 52px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 34px;
+}
+
+.btnForm:hover,
+.btnForm:focus {
+  background-color: #f7d28f;
+  color: #000;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.loginLink {
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #f6b83d;
+  cursor: pointer;
+  padding-left: 2px;
+}
+
+.error {
+  color: #d14343;
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+  font-family: 'Manrope', sans-serif;
+}
