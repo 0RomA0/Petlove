@@ -82,7 +82,7 @@ export default function LoginForm() {
             <p className={style.text}>
               Don’t have an account?
               <NavLink to={'/register'} className={style.loginLink}>
-                Registr
+                Register
               </NavLink>
             </p>
           </div>

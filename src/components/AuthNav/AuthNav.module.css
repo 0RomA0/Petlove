@@ -1,0 +1,75 @@
+.btnContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btnLogIn {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  padding: 15px 30px;
+  width: auto;
+  height: auto;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btnLogIn:hover {
+  color: #f6b83d;
+  background: #fff4df;
+}
+
+.btnRegistration {
+  border-radius: 30px;
+  padding: 15px 20px;
+  width: auto;
+  height: auto;
+  background: #fff4df;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #f6b83d;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btnRegistration:hover {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.btnLogOut {
+  padding: 8px 16px;
+  font-size: 14px;
+  background: #f4c550;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  line-height: 156%;
+  color: #121417;
+}
+
+.btnLogOut:hover {
+  background-color: #ffdc86;
+}

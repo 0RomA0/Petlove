@@ -1,0 +1,35 @@
+.container {
+  margin-right: auto;
+  margin-left: 280px;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  padding: 15px 20px;
+  width: auto;
+  height: auto;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #f6b83d;
+  background: #fff4df;
+}
+
+.active {
+  color: #f4c550;
+}
