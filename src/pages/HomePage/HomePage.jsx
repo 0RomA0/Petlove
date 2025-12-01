@@ -6,6 +6,8 @@ export default function HomePage() {
     <>
       <div className={style.container}>
         <div className={style.contentHome}>
+          <Header />
+
           <div className={style.textContainer}>
             <h1 className={style.title}>
               Take good <span className={style.spanHome}> care </span> of your
@@ -21,7 +23,7 @@ export default function HomePage() {
           className={style.imgHome}
           srcSet="../../../home-img1x.png, ../../../home-img2x.png"
           src="../../../home-img1x.png"
-          alt="cat"
+          alt="img"
         />
       </div>
     </>

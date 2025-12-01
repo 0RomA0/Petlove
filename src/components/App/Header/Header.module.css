@@ -1,3 +1,5 @@
+/* Home style */
+
 .container {
   display: flex;
   align-items: center;
@@ -5,4 +7,10 @@
 
 .logo {
   cursor: pointer;
+}
+
+/* Base style */
+.defaultContainer {
+  display: flex;
+  align-items: center;
 }

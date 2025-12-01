@@ -5,8 +5,10 @@ import Header from '../App/Header/Header';
 export default function MainLayout() {
   return (
     <div className={style.container}>
-      <Header />
-      <Outlet />
+      <div className={style.content}>
+        <Header />
+        <Outlet />
+      </div>
     </div>
   );
 }

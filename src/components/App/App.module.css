@@ -2,5 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin: 0 auto;
+  background: #f9f9f9;
 }

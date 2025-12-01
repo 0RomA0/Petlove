@@ -2,14 +2,17 @@ import style from './Nav.module.css';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
-export default function Nav() {
+export default function Nav({ isHome }) {
   const NavLinkActiveClass = ({ isActive }) =>
-    clsx(style.link, isActive && style.active);
+    clsx(
+      isHome ? style.linkHome : style.linkBase,
+      isActive && isHome ? style.activeHome : style.activeBase,
+    );
 
   return (
     <div className={style.container}>
       <nav className={style.nav}>
-        <NavLink to="/" className={NavLinkActiveClass}>
+        <NavLink to="/news" className={NavLinkActiveClass}>
           News
         </NavLink>
         <NavLink to="/teachers" className={NavLinkActiveClass}>
