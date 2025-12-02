@@ -9,6 +9,12 @@
   gap: 16px;
 }
 
+.emailInputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
 .passwordInputContainer {
   display: flex;
   flex-direction: column;
@@ -16,6 +22,7 @@
 }
 
 .eyeBtn {
+  padding: 0;
   position: absolute;
   top: 16px;
   right: 16px;
@@ -110,9 +117,55 @@ input::placeholder {
 }
 
 .error {
-  color: #d14343;
+  color: #ef2447;
   font-size: 14px;
-  margin-top: -8px;
-  margin-bottom: 8px;
   font-family: 'Manrope', sans-serif;
+}
+
+.success {
+  color: #08aa83;
+}
+
+/* Input error and success */
+
+.inputError {
+  border: 1px solid #ef2447;
+}
+
+.inputSuccess {
+  border: 1px solid #08aa83;
+}
+
+.emailIconSuccess,
+.passwordIconSuccess {
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: #08aa83;
+}
+
+.emailIconError,
+.passwordIconError {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #ef2447;
+}
+
+.emailIconSuccess,
+.emailIconError {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+}
+
+.passwordIconSuccess,
+.passwordIconError {
+  position: absolute;
+  top: 50%;
+  right: 48px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
 }

@@ -27,14 +27,14 @@ const newsSlice = createSlice({
       .addCase(fetchNews.pending, handlePending)
       .addCase(fetchNews.rejected, handleRejected)
       .addCase(fetchNews.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-
-        // action.payload === { page, perPage, totalPages, results }
-        state.items = action.payload.results;
-        state.page = action.payload.page;
-        state.perPage = action.payload.perPage;
+        if (action.payload.page === 1) {
+          state.items = action.payload.results;
+        } else {
+          state.items = [...state.items, ...action.payload.results];
+        }
         state.totalPages = action.payload.totalPages;
+        state.page = action.payload.page;
+        state.isLoading = false;
       });
   },
 });

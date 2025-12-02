@@ -8,7 +8,7 @@ export const fetchNews = createAsyncThunk(
       const res = await api.get('/news', {
         params: { page, limit, keyword },
       });
-      console.log(res);
+      // console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -37,56 +37,118 @@ export default function LoginForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={style.form}>
-          <div className={style.formContent}>
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={style.input}
-            />
-            <ErrorMessage name="email" component="p" className={style.error} />
-
-            <div className={style.passwordInputContainer}>
-              <Field
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-                className={style.input}
-              />
-              <button
-                type="button"
-                className={style.eyeBtn}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                <svg className={style.eyeIcon}>
-                  <use
-                    href={`/sprite.svg#${
-                      showPassword ? 'icon-eye' : 'icon-eye-off'
+        {({ errors, touched, values }) => (
+          <Form className={style.form}>
+            <div className={style.formContent}>
+              <div className={style.emailInputContainer}>
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className={` ${style.input} ${
+                    touched.email
+                      ? errors.email
+                        ? style.inputError
+                        : style.inputSuccess
+                      : ''
+                  }`}
+                />
+                {touched.email && values.email !== '' && (
+                  <svg
+                    className={`${
+                      errors.email
+                        ? style.emailIconError
+                        : style.emailIconSuccess
                     }`}
+                  >
+                    <use
+                      href={`/sprite.svg#${
+                        errors.email ? 'icon-cross-small' : 'icon-check'
+                      }`}
+                    />
+                  </svg>
+                )}
+              </div>
+              {touched.email &&
+                values.email !== '' &&
+                (errors.email ? (
+                  <ErrorMessage
+                    name="email"
+                    component="p"
+                    className={style.error}
                   />
-                </svg>
-              </button>
-            </div>
-            <ErrorMessage
-              name="password"
-              component="p"
-              className={style.error}
-            />
-          </div>
+                ) : (
+                  <p className={style.success}>Email is correct</p>
+                ))}
+              <div className={style.passwordInputContainer}>
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  className={` ${style.input} ${
+                    touched.password
+                      ? errors.password
+                        ? style.inputError
+                        : style.inputSuccess
+                      : ''
+                  }`}
+                />
+                {touched.password && values.password !== '' && (
+                  <svg
+                    className={`${
+                      errors.password
+                        ? style.passwordIconError
+                        : style.passwordIconSuccess
+                    }`}
+                  >
+                    <use
+                      href={`/sprite.svg#${
+                        errors.password ? 'icon-cross-small' : 'icon-check'
+                      }`}
+                    />
+                  </svg>
+                )}
+                <button
+                  type="button"
+                  className={style.eyeBtn}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  <svg className={style.eyeIcon}>
+                    <use
+                      href={`/sprite.svg#${
+                        showPassword ? 'icon-eye' : 'icon-eye-off'
+                      }`}
+                    />
+                  </svg>
+                </button>
+              </div>
 
-          <div className={style.contentContainer}>
-            <button type="submit" className={style.btnForm}>
-              Log In
-            </button>
-            <p className={style.text}>
-              Don’t have an account?
-              <NavLink to={'/register'} className={style.loginLink}>
-                Register
-              </NavLink>
-            </p>
-          </div>
-        </Form>
+              {touched.password &&
+                values.password !== '' &&
+                (errors.password ? (
+                  <ErrorMessage
+                    name="password"
+                    component="p"
+                    className={style.error}
+                  />
+                ) : (
+                  <p className={style.success}>Password is secure</p>
+                ))}
+            </div>
+
+            <div className={style.contentContainer}>
+              <button type="submit" className={style.btnForm}>
+                Log In
+              </button>
+              <p className={style.text}>
+                Don’t have an account?
+                <NavLink to={'/register'} className={style.loginLink}>
+                  Register
+                </NavLink>
+              </p>
+            </div>
+          </Form>
+        )}
       </Formik>
 
       <Toaster position="top-right" reverseOrder={false} />

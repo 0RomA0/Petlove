@@ -1,18 +1,10 @@
-// import style from "./NewsPage.module.css"
-import { useDispatch } from 'react-redux';
-import { fetchNews } from '../../redux/news/operations';
-import { useEffect } from 'react';
+// import style from './NewsPage.module.css';
+import NewsList from '../../components/NewsList/NewsList';
 
 export default function NewsPage() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchNews());
-  }, [dispatch]);
-
   return (
     <>
-      <h1> Hi, I'm NewsPage </h1>
+      <NewsList />
     </>
   );
 }

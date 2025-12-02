@@ -1,0 +1,44 @@
+.container {
+}
+
+.newsImg {
+  border-radius: 15px;
+  width: 361px;
+  height: 226px;
+}
+
+.textContent {
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.content {
+}
+
+.date {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.btn {
+}
