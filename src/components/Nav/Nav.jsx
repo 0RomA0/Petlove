@@ -15,10 +15,10 @@ export default function Nav({ isHome }) {
         <NavLink to="/news" className={NavLinkActiveClass}>
           News
         </NavLink>
-        <NavLink to="/teachers" className={NavLinkActiveClass}>
+        <NavLink to="/notices" className={NavLinkActiveClass}>
           Find pet
         </NavLink>
-        <NavLink to="/teachers" className={NavLinkActiveClass}>
+        <NavLink to="/friends" className={NavLinkActiveClass}>
           Our friends
         </NavLink>
 

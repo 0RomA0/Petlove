@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import Nav from '../../Nav/Nav';
+import Nav from '../Nav/Nav';
 import style from './Header.module.css';
-import AuthNav from '../../AuthNav/AuthNav';
+import AuthNav from '../AuthNav/AuthNav';
 
 export default function Header() {
   const { pathname } = useLocation();

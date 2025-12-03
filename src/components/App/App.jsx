@@ -7,6 +7,9 @@ const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const MainLayout = lazy(() => import('../MainLayout/MainLayout'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage'));
+const OurFriendsPage = lazy(() =>
+  import('../../pages/OurFriendsPage/OurFriendsPage'),
+);
 const RegistrationPage = lazy(() =>
   import('../../pages/RegistrationPage/RegistrationPage'),
 );
@@ -35,11 +38,11 @@ function App() {
         >
           {/* <Route path="home" element={<HomePage />} /> */}
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/login" element={<LoginPage />} />
 
           {/* <Route path="/notices" element={<NoticesPage />} />
-          <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="*" element={<NotFoundPage />} /> */}

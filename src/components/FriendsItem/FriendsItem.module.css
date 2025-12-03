@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.workTime {
+  border-radius: 30px;
+  padding: 8px;
+  width: 100px;
+  height: auto;
+  text-align: center;
+  margin-left: auto;
+  background: #fff4df;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
+}
+
+.InfoContainer {
+  display: flex;
+}
+
+.friendImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 100%;
+}
+
+.contentContainet {
+}
+
+.textContent {
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: -0.04em;
+  color: #262626;
+}
+
+.friendsInfo {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.info {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #262626;
+}

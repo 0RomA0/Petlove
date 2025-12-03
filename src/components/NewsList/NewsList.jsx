@@ -3,14 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchNews } from '../../redux/news/operations';
 import { useEffect } from 'react';
 import { selectIsLoading, selectNews } from '../../redux/news/selectors';
-import NewsInfo from '../../components/NewsInfo/NewsInfo';
+import NewsItem from '../NewsItem/NewsItem';
 
 export default function NewsList() {
   const dispatch = useDispatch();
   const news = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoading);
-
-  console.log(news);
 
   // console.log(news);
   useEffect(() => {
@@ -28,7 +26,7 @@ export default function NewsList() {
         <ul className={style.list}>
           {news.map((item) => (
             <li className={style.item} key={item._id}>
-              <NewsInfo
+              <NewsItem
                 newsText={item.text}
                 newsTitle={item.title}
                 newsDate={item.date}
