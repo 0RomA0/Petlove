@@ -8,6 +8,8 @@ export default function FriendsItem({
   friendsAddress,
   friendsPhone,
   Friendswork,
+  FriendsUrl,
+  FriendsAddressUrl,
 }) {
   return (
     <>
@@ -24,21 +26,25 @@ export default function FriendsItem({
               <h2 className={style.title}> {friendsTitle} </h2>
               <p className={style.friendsInfo}>
                 Email:
-                <span className={style.info}>
+                <a href={FriendsUrl} target="_blank" className={style.info}>
                   {friendsEmail || 'website only'}
-                </span>
+                </a>
               </p>
               <p className={style.friendsInfo}>
                 Address:
-                <span className={style.info}>
+                <a
+                  href={friendsAddress ? FriendsAddressUrl : FriendsUrl}
+                  target="_blank"
+                  className={style.info}
+                >
                   {friendsAddress || 'website only'}
-                </span>
+                </a>
               </p>
               <p className={style.friendsInfo}>
                 Phone:
-                <span className={style.info}>
+                <a href={FriendsUrl} target="_blank" className={style.info}>
                   {friendsPhone || 'website only'}
-                </span>
+                </a>
               </p>
             </div>
           </div>

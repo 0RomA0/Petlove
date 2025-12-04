@@ -1,3 +1,17 @@
+.container {
+  padding-top: 96px;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  margin-bottom: 60px;
+}
+
 .list {
   max-width: 1153px;
   height: auto;

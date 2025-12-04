@@ -22,6 +22,7 @@
 
 .InfoContainer {
   display: flex;
+  gap: 20px;
 }
 
 .friendImg {
@@ -34,6 +35,9 @@
 }
 
 .textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .title {
@@ -43,6 +47,7 @@
   line-height: 130%;
   letter-spacing: -0.04em;
   color: #262626;
+  margin-bottom: 20px;
 }
 
 .friendsInfo {
@@ -61,4 +66,18 @@
   line-height: 129%;
   letter-spacing: -0.02em;
   color: #262626;
+  padding-left: 2px;
+  text-decoration: none;
+  cursor: pointer;
+
+  display: inline-block;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.info:hover {
+  color: #f6b83d;
 }

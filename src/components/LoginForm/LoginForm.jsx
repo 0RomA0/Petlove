@@ -37,10 +37,16 @@ export default function LoginForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched }) => (
           <Form className={style.form}>
             <div className={style.formContent}>
-              <div className={style.emailInputContainer}>
+              <div
+                className={`${style.emailInputContainer} ${
+                  touched.email && (errors.email || !errors.email)
+                    ? style.hasMessage
+                    : ''
+                }`}
+              >
                 <Field
                   type="email"
                   name="email"
@@ -53,7 +59,7 @@ export default function LoginForm() {
                       : ''
                   }`}
                 />
-                {touched.email && values.email !== '' && (
+                {touched.email && (
                   <svg
                     className={`${
                       errors.email
@@ -70,15 +76,14 @@ export default function LoginForm() {
                 )}
               </div>
               {touched.email &&
-                values.email !== '' &&
                 (errors.email ? (
                   <ErrorMessage
                     name="email"
                     component="p"
-                    className={style.error}
+                    className={style.errorEmail}
                   />
                 ) : (
-                  <p className={style.success}>Email is correct</p>
+                  <p className={style.successEmail}>Email is correct</p>
                 ))}
               <div className={style.passwordInputContainer}>
                 <Field
@@ -93,7 +98,7 @@ export default function LoginForm() {
                       : ''
                   }`}
                 />
-                {touched.password && values.password !== '' && (
+                {touched.password && (
                   <svg
                     className={`${
                       errors.password
@@ -124,15 +129,14 @@ export default function LoginForm() {
               </div>
 
               {touched.password &&
-                values.password !== '' &&
                 (errors.password ? (
                   <ErrorMessage
                     name="password"
                     component="p"
-                    className={style.error}
+                    className={style.errorPassword}
                   />
                 ) : (
-                  <p className={style.success}>Password is secure</p>
+                  <p className={style.successPassword}>Password is secure</p>
                 ))}
             </div>
 

@@ -6,7 +6,8 @@ export default function Nav({ isHome }) {
   const NavLinkActiveClass = ({ isActive }) =>
     clsx(
       isHome ? style.linkHome : style.linkBase,
-      isActive && isHome ? style.activeHome : style.activeBase,
+      isActive && isHome && style.activeHome,
+      isActive && !isHome && style.activeBase,
     );
 
   return (

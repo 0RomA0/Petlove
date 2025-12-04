@@ -58,3 +58,7 @@
 .linkBase:hover {
   border: 1px solid #f6b83d;
 }
+
+.activeBase {
+  border: 1px solid #f6b83d;
+}

@@ -23,7 +23,7 @@ export default function FriendsList() {
   return (
     <>
       <div className={style.container}>
-        <h2> Our friends </h2>
+        <h2 className={style.title}> Our friends </h2>
         <ul className={style.list}>
           {friends.map((item) => (
             <li className={style.item} key={item._id}>
@@ -34,7 +34,8 @@ export default function FriendsList() {
                 friendsPhone={item.phone}
                 friendsPhoto={item.imageUrl}
                 Friendswork={item.workDays}
-                // newsId={item.id}
+                FriendsUrl={item.url}
+                FriendsAddressUrl={item.addressUrl}
               />
             </li>
           ))}

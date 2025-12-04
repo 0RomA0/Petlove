@@ -22,7 +22,7 @@ export default function NewsList() {
   return (
     <>
       <div className={style.container}>
-        <h2> News </h2>
+        <h2 className={style.title}> News </h2>
         <ul className={style.list}>
           {news.map((item) => (
             <li className={style.item} key={item._id}>

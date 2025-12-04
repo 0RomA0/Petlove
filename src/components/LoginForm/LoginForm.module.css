@@ -6,19 +6,25 @@
 .formContent {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  flex-grow: 1;
 }
 
 .emailInputContainer {
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.hasMessage {
+  margin-bottom: 0;
 }
 
 .passwordInputContainer {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 0;
 }
 
 .eyeBtn {
@@ -85,7 +91,7 @@ input::placeholder {
   text-transform: uppercase;
   color: #fff;
   cursor: pointer;
-  margin-top: 34px;
+  margin-top: 58px;
 }
 
 .btnForm:hover,
@@ -116,14 +122,36 @@ input::placeholder {
   padding-left: 2px;
 }
 
-.error {
+.errorEmail,
+.errorPassword {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
   color: #ef2447;
-  font-size: 14px;
-  font-family: 'Manrope', sans-serif;
 }
 
-.success {
+.successEmail,
+.successPassword {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
   color: #08aa83;
+}
+
+.errorEmail,
+.successEmail {
+  margin-bottom: 12px;
+}
+
+.errorEmail,
+.successEmail,
+.errorPassword,
+.successPassword {
+  margin-top: 4px;
 }
 
 /* Input error and success */
