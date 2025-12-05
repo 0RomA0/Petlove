@@ -4,10 +4,14 @@ import style from './RegistrationForm.module.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../redux/auth/operations';
 
 export default function RegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const dispatch = useDispatch();
 
   const validationSchema = Yup.object({
     name: Yup.string()
@@ -32,9 +36,20 @@ export default function RegistrationForm() {
   });
 
   const handleSubmit = (values, actions) => {
-    toast.success('Registration was successfully!');
-
-    actions.resetForm();
+    const data = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    };
+    dispatch(registerUser(data))
+      .unwrap()
+      .then(() => {
+        actions.resetForm();
+        toast.success('Registration was successfully!');
+      })
+      .catch(() => {
+        toast.error('Registration was failed!');
+      });
   };
 
   return (

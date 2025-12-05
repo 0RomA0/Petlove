@@ -4,9 +4,13 @@ import style from './LoginForm.module.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logInUser } from '../../redux/auth/operations';
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -22,9 +26,15 @@ export default function LoginForm() {
   });
 
   const handleSubmit = (values, actions) => {
-    toast.success('Login was successfully!');
-
-    actions.resetForm();
+    dispatch(logInUser(values))
+      .unwrap()
+      .then(() => {
+        actions.resetForm();
+        toast.success('Login was successfully!');
+      })
+      .catch(() => {
+        toast.error('Login was failed!');
+      });
   };
 
   return (

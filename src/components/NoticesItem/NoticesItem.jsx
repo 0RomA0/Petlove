@@ -15,11 +15,14 @@ export default function NoticesItem({
   return (
     <>
       <div className={style.container}>
-        <img
-          className={style.noticesImg}
-          src={noticesPhoto}
-          alt={noticesTitle}
-        />
+        <div className={style.cardImgWrapper}>
+          <img
+            className={style.noticesImg}
+            src={noticesPhoto}
+            alt={noticesName}
+          />
+        </div>
+
         <div className={style.contentContainet}>
           <div className={style.textContent}>
             <h2 className={style.title}> {noticesTitle} </h2>

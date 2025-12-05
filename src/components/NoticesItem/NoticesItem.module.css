@@ -1,11 +1,21 @@
 .container {
 }
 
-.noticesImg {
+.cardImgWrapper {
   border-radius: 16px;
   width: 315px;
   height: 178px;
+  overflow: hidden;
+  position: relative;
+}
+
+.noticesImg {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+  position: static;
 }
 
 .textContent {

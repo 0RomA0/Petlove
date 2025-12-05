@@ -64,3 +64,91 @@
   color: #262626;
   margin-bottom: 32px;
 }
+
+.infoWrapper {
+  border-radius: 20px;
+  width: 294px;
+  height: 121px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  position: relative;
+  z-index: 10;
+  top: 66%;
+  left: 8%;
+}
+
+.divWrapper {
+  display: flex;
+  margin-bottom: auto;
+  margin-top: 16px;
+}
+
+.imgWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background: #fff4df;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.smallImgCat {
+  width: 32px;
+  height: 32px;
+}
+
+.infoCat {
+  width: 194px;
+  height: 84px;
+}
+
+.infoCatText {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.catName {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+}
+
+.catBirthday {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+  display: flex;
+}
+
+.span {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #262626;
+  padding-left: 4px;
+}
+
+.textInfo {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.8);
+  width: 194px;
+}
