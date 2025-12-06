@@ -94,8 +94,7 @@ input::placeholder {
   margin-top: 58px;
 }
 
-.btnForm:hover,
-.btnForm:focus {
+.btnForm:hover {
   background-color: #f7d28f;
   color: #000;
 }

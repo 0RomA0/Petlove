@@ -6,13 +6,32 @@
 .formContent {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  flex-grow: 1;
+}
+
+.nameInputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.emailInputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
 .passwordInputContainer {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 16px;
+}
+
+.hasMessage {
+  margin-bottom: 0;
 }
 
 .eyeBtn {
@@ -81,8 +100,7 @@ input::placeholder {
   margin-top: 34px;
 }
 
-.btnForm:hover,
-.btnForm:focus {
+.btnForm:hover {
   background-color: #f7d28f;
   color: #000;
 }
@@ -109,10 +127,86 @@ input::placeholder {
   padding-left: 2px;
 }
 
-.error {
-  color: #d14343;
-  font-size: 14px;
-  margin-top: -8px;
-  margin-bottom: 8px;
-  font-family: 'Manrope', sans-serif;
+.errorConfirmPassword,
+.errorName,
+.errorEmail,
+.errorPassword {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+}
+
+.successEmail,
+.successPassword {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: #08aa83;
+}
+
+.errorConfirmPassword,
+.errorName,
+.errorEmail,
+.successEmail,
+.errorPassword,
+.successPassword {
+  margin-bottom: 12px;
+}
+
+.errorConfirmPassword,
+.errorName,
+.errorEmail,
+.successEmail,
+.errorPassword,
+.successPassword {
+  margin-top: 4px;
+}
+
+/* Input error and success */
+
+.inputError {
+  border: 1px solid #ef2447;
+}
+
+.inputSuccess {
+  border: 1px solid #08aa83;
+}
+
+.emailIconSuccess,
+.passwordIconSuccess {
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: #08aa83;
+}
+
+.emailIconError,
+.passwordIconError {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #ef2447;
+}
+
+.emailIconSuccess,
+.emailIconError {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+}
+
+.passwordIconSuccess,
+.passwordIconError {
+  position: absolute;
+  top: 50%;
+  right: 48px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
 }

@@ -2,10 +2,16 @@ import { Link, useLocation } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import style from './Header.module.css';
 import AuthNav from '../AuthNav/AuthNav';
+import UserNav from '../UserNav/UserNav';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
 export default function Header() {
   const { pathname } = useLocation();
   const isHome = pathname === '/home';
+
+  const isLogin = useSelector(selectIsLoggedIn);
+
   return (
     <>
       <header>
@@ -25,7 +31,7 @@ export default function Header() {
 
           <Nav isHome={isHome} />
 
-          <AuthNav isHome={isHome} />
+          {isLogin ? <UserNav isHome={isHome} /> : <AuthNav isHome={isHome} />}
         </div>
       </header>
     </>

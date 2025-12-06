@@ -64,91 +64,182 @@ export default function RegistrationForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={style.form}>
-          <div className={style.formContent}>
-            <Field
-              type="text"
-              name="name"
-              placeholder="Name"
-              className={style.input}
-            />
-            <ErrorMessage name="name" component="p" className={style.error} />
-
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={style.input}
-            />
-            <ErrorMessage name="email" component="p" className={style.error} />
-
-            <div className={style.passwordInputContainer}>
-              <Field
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-                className={style.input}
-              />
-              <button
-                type="button"
-                className={style.eyeBtn}
-                onClick={() => setShowPassword(!showPassword)}
+        {({ errors, touched }) => (
+          <Form className={style.form}>
+            <div className={style.formContent}>
+              <div
+                className={`${style.nameInputContainer} ${
+                  touched.name && (errors.name || !errors.name)
+                    ? style.hasMessage
+                    : ''
+                }`}
               >
-                <svg className={style.eyeIcon}>
-                  <use
-                    href={`/sprite.svg#${
-                      showPassword ? 'icon-eye' : 'icon-eye-off'
-                    }`}
-                  />
-                </svg>
-              </button>
-            </div>
-            <ErrorMessage
-              name="password"
-              component="p"
-              className={style.error}
-            />
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  className={style.input}
+                />
+              </div>
+              <ErrorMessage
+                name="name"
+                component="p"
+                className={style.errorName}
+              />
 
-            <div className={style.passwordInputContainer}>
-              <Field
-                type={showConfirmPassword ? 'text' : 'password'}
+              <div
+                className={`${style.emailInputContainer} ${
+                  touched.email && (errors.email || !errors.email)
+                    ? style.hasMessage
+                    : ''
+                }`}
+              >
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className={` ${style.input} ${
+                    touched.email
+                      ? errors.email
+                        ? style.inputError
+                        : style.inputSuccess
+                      : ''
+                  }`}
+                />
+                {touched.email && (
+                  <svg
+                    className={`${
+                      errors.email
+                        ? style.emailIconError
+                        : style.emailIconSuccess
+                    }`}
+                  >
+                    <use
+                      href={`/sprite.svg#${
+                        errors.email ? 'icon-cross-small' : 'icon-check'
+                      }`}
+                    />
+                  </svg>
+                )}
+              </div>
+              {touched.email &&
+                (errors.email ? (
+                  <ErrorMessage
+                    name="email"
+                    component="p"
+                    className={style.errorEmail}
+                  />
+                ) : (
+                  <p className={style.successEmail}>Email is correct</p>
+                ))}
+
+              <div
+                className={`${style.passwordInputContainer} ${
+                  touched.password && (errors.password || !errors.password)
+                    ? style.hasMessage
+                    : ''
+                }`}
+              >
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  className={` ${style.input} ${
+                    touched.password
+                      ? errors.password
+                        ? style.inputError
+                        : style.inputSuccess
+                      : ''
+                  }`}
+                />
+                {touched.password && (
+                  <svg
+                    className={`${
+                      errors.password
+                        ? style.passwordIconError
+                        : style.passwordIconSuccess
+                    }`}
+                  >
+                    <use
+                      href={`/sprite.svg#${
+                        errors.password ? 'icon-cross-small' : 'icon-check'
+                      }`}
+                    />
+                  </svg>
+                )}
+                <button
+                  type="button"
+                  className={style.eyeBtn}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  <svg className={style.eyeIcon}>
+                    <use
+                      href={`/sprite.svg#${
+                        showPassword ? 'icon-eye' : 'icon-eye-off'
+                      }`}
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {touched.password &&
+                (errors.password ? (
+                  <ErrorMessage
+                    name="password"
+                    component="p"
+                    className={style.errorPassword}
+                  />
+                ) : (
+                  <p className={style.successPassword}>Password is secure</p>
+                ))}
+
+              <div
+                className={`${style.passwordInputContainer} ${
+                  touched.password && (errors.password || !errors.password)
+                    ? style.hasMessage
+                    : ''
+                }`}
+              >
+                <Field
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  className={style.input}
+                />
+                <button
+                  type="button"
+                  className={style.eyeBtn}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  <svg className={style.eyeIcon}>
+                    <use
+                      href={`/sprite.svg#${
+                        showConfirmPassword ? 'icon-eye' : 'icon-eye-off'
+                      }`}
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ErrorMessage
                 name="confirmPassword"
-                placeholder="Confirm password"
-                className={style.input}
+                component="p"
+                className={style.errorConfirmPassword}
               />
-              <button
-                type="button"
-                className={style.eyeBtn}
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              >
-                <svg className={style.eyeIcon}>
-                  <use
-                    href={`/sprite.svg#${
-                      showConfirmPassword ? 'icon-eye' : 'icon-eye-off'
-                    }`}
-                  />
-                </svg>
-              </button>
             </div>
-            <ErrorMessage
-              name="confirmPassword"
-              component="p"
-              className={style.error}
-            />
-          </div>
 
-          <div className={style.contentContainer}>
-            <button type="submit" className={style.btnForm}>
-              Registration
-            </button>
-            <p className={style.text}>
-              Already have an account?
-              <NavLink to={'/login'} className={style.loginLink}>
-                Login
-              </NavLink>
-            </p>
-          </div>
-        </Form>
+            <div className={style.contentContainer}>
+              <button type="submit" className={style.btnForm}>
+                Registration
+              </button>
+              <p className={style.text}>
+                Already have an account?
+                <NavLink to={'/login'} className={style.loginLink}>
+                  Login
+                </NavLink>
+              </p>
+            </div>
+          </Form>
+        )}
       </Formik>
 
       <Toaster position="top-right" reverseOrder={false} />

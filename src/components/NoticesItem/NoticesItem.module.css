@@ -18,6 +18,11 @@
   position: static;
 }
 
+.wrapper {
+  width: 315px;
+  height: 114px;
+}
+
 .textContent {
   display: flex;
   align-items: flex-end;
@@ -109,7 +114,7 @@
   justify-content: space-between;
 }
 
-.btn {
+.btnLearnMore {
   border-radius: 30px;
   padding: 14px 89px;
   width: 257px;
@@ -126,6 +131,11 @@
   border: none;
 }
 
+.btnLearnMore:hover {
+  background-color: #f7d28f;
+  color: #000;
+}
+
 .btnHeart {
   border-radius: 30px;
   padding: 15px;
@@ -134,6 +144,10 @@
   background: #fff4df;
   cursor: pointer;
   border: none;
+}
+
+.btnHeart:hover {
+  background: #fbe7c1;
 }
 
 .heartIcon {

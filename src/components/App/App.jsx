@@ -1,7 +1,10 @@
 import style from './App.module.css';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectRefreshing } from '../../redux/auth/selectors';
+import { refreshUser } from '../../redux/auth/operations';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const MainLayout = lazy(() => import('../MainLayout/MainLayout'));
@@ -18,9 +21,19 @@ const NoticesPage = lazy(() => import('../../pages/NoticesPage/NoticesPage'));
 const NotFoundPage = lazy(() =>
   import('../../pages/NotFoundPage/NotFoundPage'),
 );
+const AddPetPage = lazy(() => import('../../pages/AddPetPage/AddPetPage'));
 
 function App() {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <p> Refreshing user... </p>
+  ) : (
     <div className={style.container}>
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -45,10 +58,11 @@ function App() {
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/notices" element={<NoticesPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="*" element={<NotFoundPage />} />
           {/*
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/add-pet" element={<AddPetPage />} />
+          
           */}
         </Route>
       </Routes>

@@ -1,0 +1,40 @@
+.btnLogOut {
+  border-radius: 30px;
+  padding: 15px 30px;
+  width: 136px;
+  height: 50px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btnLogOutHome {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  padding: 15px 30px;
+  width: 136px;
+  height: 50px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btnLogOutHome:hover {
+  background: #fbe7c1;
+  color: #f6b83d;
+}

@@ -2,6 +2,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  margin-left: 142px;
 }
 
 .btnLogInHome {
@@ -50,8 +51,7 @@
 }
 
 .btnRegistrationHome:hover {
-  background: none;
-  color: #fff;
+  background: #fbe7c1;
 }
 
 .btnLogOut {
@@ -120,8 +120,7 @@
 }
 
 .btnRegistrationBase:hover {
-  background: #f6b83d;
-  color: #fff;
+  background: #fbe7c1;
 }
 
 .btnLogOut {

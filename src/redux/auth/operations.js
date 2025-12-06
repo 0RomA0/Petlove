@@ -44,3 +44,27 @@ export const logOutUser = createAsyncThunk(
     }
   },
 );
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const userToken = state.auth.token;
+
+    setAuthHeader(`Bearer ${userToken}`);
+
+    try {
+      const response = await api.get('/users/current');
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const state = thunkAPI.getState();
+
+      return state.auth.token !== null;
+    },
+  },
+);

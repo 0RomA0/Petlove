@@ -20,10 +20,6 @@ export default function AuthNav({ isHome }) {
           Registration
         </NavLink>
       </div>
-
-      {/* <button className={style.btnLogOut} type="button">
-        Logout
-      </button> */}
     </>
   );
 }
