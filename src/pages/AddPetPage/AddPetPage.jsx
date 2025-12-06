@@ -20,6 +20,7 @@ export default function AddPetPage() {
           <div className={style.textWrapper}>
             <h2 className={style.formTitle}> Add my pet / </h2>
             <p className={style.formText}>Personal details </p>
+            <p> svg</p>
           </div>
 
           {/* <LoginForm /> */}
