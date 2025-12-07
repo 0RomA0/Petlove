@@ -37,7 +37,7 @@
 .wrapper {
   border-radius: 60px;
   width: 592px;
-  height: 654px;
+  height: auto;
   background: #fff;
 }
 

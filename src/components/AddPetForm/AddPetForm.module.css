@@ -1,0 +1,250 @@
+.form {
+  width: 432px;
+  height: auto;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.iconWrapper {
+  display: flex;
+  margin-top: 40px;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.svgWrapperGirl {
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.svgWrapperBoy {
+  background: rgba(84, 173, 255, 0.1);
+}
+
+.svgWrapperBoth {
+  background: #fff4df;
+}
+
+.svgWrapperGirl,
+.svgWrapperBoy,
+.svgWrapperBoth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+}
+
+.iconGirl {
+  stroke: hsl(350, 89%, 60%);
+}
+
+.iconBoy {
+  stroke: #54adff;
+}
+
+.iconBoth {
+}
+
+.iconGirl,
+.iconBoy,
+.iconBoth {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.2px;
+  fill: none;
+}
+
+.svgWrapperPaw {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff4df;
+  border-radius: 100px;
+  width: 86px;
+  height: 86px;
+  margin: 0 auto;
+}
+
+.iconPaw {
+  width: 44px;
+  height: 44px;
+}
+
+/* RADIO BUTTON */
+
+.radio {
+  display: none;
+}
+
+.sexLabel {
+  cursor: pointer;
+}
+
+/*  ACTIVE */
+.radio:checked + .svgWrapperGirl {
+  background: hsl(350, 89%, 60%);
+}
+.radio:checked + .svgWrapperGirl .iconGirl {
+  stroke: #fff;
+}
+
+.radio:checked + .svgWrapperBoy {
+  background: #54adff;
+}
+.radio:checked + .svgWrapperBoy .iconBoy {
+  stroke: #fff;
+}
+
+.radio:checked + .svgWrapperBoth {
+  background: #f6b84f;
+}
+.radio:checked + .svgWrapperBoth .iconBoth {
+  stroke: #fff;
+}
+
+.svgWrapperGirl:hover,
+.svgWrapperBoy:hover,
+.svgWrapperBoth:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.submitBtn {
+  border-radius: 30px;
+  padding: 14px 58px;
+  width: 170px;
+  height: 48px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.backBtn {
+  border-radius: 30px;
+  padding: 14px 67px;
+  width: 170px;
+  height: 48px;
+  background: rgba(38, 38, 38, 0.05);
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  border: none;
+  cursor: pointer;
+}
+
+.inputTitle,
+.inputName {
+  width: 100%;
+  max-width: 432px;
+  height: 42px;
+  padding: 12px 200px 12px 12px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 42px;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 1);
+  box-sizing: border-box;
+}
+
+.inputImgUrl {
+  max-width: 278px;
+
+  width: 100%;
+  height: 42px;
+  padding: 12px 200px 12px 12px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 42px;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 1);
+  box-sizing: border-box;
+}
+
+.inputTitle::placeholder,
+.inputName::placeholder,
+.inputImgUrl::placeholder,
+.inputSpecies::placeholder,
+.inputBirthday::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.inputTitle:hover,
+.inputName:hover,
+.inputImgUrl:hover,
+.inputSpecies:hover,
+.inputBirthday:hover,
+.inputTitle:focus,
+.inputName:focus,
+.inputImgUrl:focus,
+.inputSpecies:focus,
+.inputBirthday:focus {
+  outline: none;
+  border: 1px solid #f6b83d;
+  box-shadow: 0 0 4px rgba(247, 154, 5, 0.999);
+}
+
+.birthdayWrapper {
+  position: relative;
+  width: 210px;
+}
+
+.wrapperBirthSpecie {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.inputSpecies,
+.inputBirthday {
+  width: 100%;
+  max-width: 210px;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 1);
+  box-sizing: border-box;
+}
+
+.iconCalendarWrapper {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.iconCalendar {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8px;
+  stroke: #262626;
+  fill: none;
+}
