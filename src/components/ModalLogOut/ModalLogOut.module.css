@@ -1,0 +1,140 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  position: absolute;
+  background: #fff;
+  border-radius: 30px;
+  height: auto;
+  padding: 80px;
+  animation: appear 0.2s ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.divWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 0;
+  border: none;
+  border-radius: 50%;
+}
+
+.closeIcon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2px;
+  stroke: #262626;
+}
+
+.imgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: #fff4df;
+}
+
+.smallImgCat {
+  width: 44px;
+  height: 44px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  margin-bottom: 28px;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.btnYes {
+  border-radius: 30px;
+  padding: 14px 57px;
+  width: 140px;
+  height: 48px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btnYes:hover {
+  background: #f7d28f;
+  color: #000;
+}
+
+.btnCancel {
+  border-radius: 30px;
+  padding: 14px 44px;
+  width: 140px;
+  height: 48px;
+  background: rgba(38, 38, 38, 0.05);
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  border: none;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: #828080;
+  color: #fff;
+}

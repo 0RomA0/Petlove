@@ -1,10 +1,6 @@
-import { useSelector } from 'react-redux';
 import style from './UserBar.module.css';
-import { selectUser } from '../../redux/auth/selectors';
 
-export default function UserBar({ isHome }) {
-  const user = useSelector(selectUser);
-
+export default function UserBar({ isHome, userName }) {
   return (
     <>
       <div className={style.container}>
@@ -13,7 +9,7 @@ export default function UserBar({ isHome }) {
             <use href="/sprite.svg#icon-user" />
           </svg>
         </div>
-        <p className={isHome ? style.textHome : style.text}> {user.name} </p>
+        <p className={isHome ? style.textHome : style.text}>{userName}</p>
       </div>
     </>
   );
