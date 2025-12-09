@@ -16,6 +16,8 @@ const usersSlice = createSlice({
       name: null,
       email: null,
     },
+    loading: false,
+    error: null,
     token: null,
     isLoggedIn: false,
     isRefreshing: false,

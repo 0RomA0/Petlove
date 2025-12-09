@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.paginationBtn {
+  position: relative;
+  border-radius: 100%;
+  stroke-width: 1px;
+  border: 1px solid rgba(38, 38, 38, 0.05);
+  background-color: transparent;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.paginationBtn:hover {
+  background-color: rgb(227, 226, 226);
+}
+
+.doubleIcon svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* перша стрілка */
+.doubleIcon svg:first-child {
+  left: 14px;
+}
+
+/* друга стрілка */
+.doubleIcon svg:last-child {
+  right: 12px;
+}
+
+.numberscontainer {
+  display: flex;
+  gap: 10px;
+}
+
+.iconActive {
+  fill: #262626;
+}
+
+.iconNoActive {
+  fill: rgba(38, 38, 38, 0.5);
+}
+
+.points {
+}
+
+.number {
+  border-radius: 100%;
+  stroke-width: 1px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberActive {
+  background-color: #f6b83d;
+  border: 1px solid #f6b83d;
+}
+
+.numberInactive {
+  background-color: transparent;
+  border: 1px solid rgba(38, 38, 38, 0.05);
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 122%;
+}
+
+.textActive {
+  color: #fff;
+}
+
+.textInactive {
+  color: #262626;
+}

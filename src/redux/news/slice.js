@@ -27,11 +27,7 @@ const newsSlice = createSlice({
       .addCase(fetchNews.pending, handlePending)
       .addCase(fetchNews.rejected, handleRejected)
       .addCase(fetchNews.fulfilled, (state, action) => {
-        if (action.payload.page === 1) {
-          state.items = action.payload.results;
-        } else {
-          state.items = [...state.items, ...action.payload.results];
-        }
+        state.items = action.payload.results;
         state.totalPages = action.payload.totalPages;
         state.page = action.payload.page;
         state.isLoading = false;

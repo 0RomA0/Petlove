@@ -3,6 +3,7 @@ import NewsReducer from './news/slice';
 import FriendsReducer from './friends/slice';
 import NoticesReducer from './notices/slice';
 import AuthReducer from './auth/slice';
+import FiltersReducer from './filters/slice';
 
 import {
   persistStore,
@@ -30,6 +31,7 @@ export const store = configureStore({
     friends: FriendsReducer,
     notices: NoticesReducer,
     auth: persistedAuthReducer,
+    filters: FiltersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

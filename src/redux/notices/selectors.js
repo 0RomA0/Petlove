@@ -6,6 +6,6 @@ export const selectError = (state) => state.notices.error;
 
 export const selectPerPage = (state) => state.notices.perPage;
 
-export const selectPage = (state) => state.notices.page;
+export const selectNoticesPage = (state) => state.notices.page;
 
-export const selectTotalPages = (state) => state.notices.totalPages;
+export const selectNoticesTotalPages = (state) => state.notices.totalPages;

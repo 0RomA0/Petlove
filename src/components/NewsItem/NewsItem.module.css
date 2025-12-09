@@ -27,6 +27,12 @@
   letter-spacing: -0.03em;
   color: #262626;
   margin-bottom: 14px;
+
+  display: -webkit-box; /* важливо для багаторядкового обрізання */
+  -webkit-line-clamp: 2; /* кількість рядків, які показуємо */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .text {
@@ -37,6 +43,12 @@
   letter-spacing: -0.02em;
   color: #262626;
   margin-bottom: 28px;
+
+  display: -webkit-box; /* важливо для багаторядкового обрізання */
+  -webkit-line-clamp: 3; /* кількість рядків, які показуємо */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content {

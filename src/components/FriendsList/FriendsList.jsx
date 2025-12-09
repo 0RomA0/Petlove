@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { fetchFriends } from '../../redux/friends/operations';
 import { SelectFriends, selectIsLoading } from '../../redux/friends/selectors';
 import FriendsItem from '../FriendsItem/FriendsItem';
+import Title from '../Title/Title';
 
 export default function FriendsList() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export default function FriendsList() {
   return (
     <>
       <div className={style.container}>
-        <h2 className={style.title}> Our friends </h2>
+        <Title text={'Our friends'} />
         <ul className={style.list}>
           {friends.map((item) => (
             <li className={style.item} key={item._id}>
