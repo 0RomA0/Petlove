@@ -9,3 +9,5 @@ export const selectSelectedSpecies = (state) => state.filters.selectedSpecies;
 export const selectIsLoading = (state) => state.filters.isLoading;
 
 export const selectError = (state) => state.filters.error;
+
+export const selectQuery = (state) => state.filters.query;

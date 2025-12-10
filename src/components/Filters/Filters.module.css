@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
 }
 
 .filterContainer {
@@ -28,15 +29,15 @@
 
 .selectWrapper {
   position: relative;
-  width: 100%;
+  width: 190px;
 }
 
 .selectHeader {
   border-radius: 30px;
-  padding: 14px 119px 14px 14px;
-  max-width: 200px;
+  padding: 14px 95px 14px 14px;
+  width: auto;
   height: auto;
-  background: #f7f7f7;
+  background: #fff;
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -45,6 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .selectList {
@@ -71,6 +73,7 @@
   font-size: 16px;
   line-height: 125%;
   color: #8d929a;
+  text-transform: capitalize;
 }
 
 .selectList li.active {
@@ -174,4 +177,15 @@
   line-height: 125%;
   letter-spacing: -0.03em;
   color: #f6b83d;
+}
+
+.selectList {
+  scrollbar-width: thin;
+  border-radius: 12px;
+  scrollbar-width: 12px;
+  scrollbar-color: #cfcecd #ffffff;
+}
+
+.selectList::-webkit-scrollbar {
+  width: 20px;
 }

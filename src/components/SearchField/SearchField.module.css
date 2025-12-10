@@ -1,0 +1,69 @@
+.closeBtn {
+  padding: 0;
+  position: absolute;
+  top: 32%;
+  right: 15%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2px;
+  stroke: #262626;
+}
+
+.SearchBtn {
+  padding: 0;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2px;
+  stroke: #262626;
+  fill: none;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input {
+  border-radius: 30px;
+  padding: 14px 150px 14px 14px;
+  width: 265px;
+  height: auto;
+  background: #fff;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #262626;
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border-color: #f6b83d;
+  box-shadow: 0 0 3px rgba(247, 154, 5, 0.999);
+}

@@ -11,6 +11,8 @@ import {
 import NewsItem from '../NewsItem/NewsItem';
 import Pagination from '../Pagination/Pagination';
 import Title from '../Title/Title';
+import SearchField from '../SearchField/SearchField';
+import { selectQuery } from '../../redux/filters/selectors';
 
 export default function NewsList() {
   const dispatch = useDispatch();
@@ -19,23 +21,35 @@ export default function NewsList() {
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
 
+  const query = useSelector(selectQuery);
   // console.log(news);
   useEffect(() => {
-    dispatch(fetchNews({ page, limit: 6 }));
-  }, [dispatch, page]);
+    dispatch(fetchNews({ page, limit: 6, keyword: query }));
+  }, [dispatch, page, query]);
 
   const handlePageChange = (newPage) => {
-    dispatch(fetchNews({ page: newPage, limit: 6 }));
+    dispatch(fetchNews({ page: newPage, limit: 6, keyword: query }));
   };
 
   if (!isLoading && news.length === 0) {
-    return <p> No data </p>;
+    return (
+      <div className={style.wrapperError}>
+        <p className={style.noDataText}>
+          <span className={style.span}>No data.</span> <br /> Pleas reload the
+          page
+        </p>
+      </div>
+    );
   }
 
   return (
     <>
       <div className={style.container}>
-        <Title text={'News'} />
+        <div className={style.wrapper}>
+          <Title text={'News'} />
+          <SearchField />
+        </div>
+
         <ul className={style.list}>
           {news.map((item) => (
             <li className={style.item} key={item._id}>

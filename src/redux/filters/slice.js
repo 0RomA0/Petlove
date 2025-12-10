@@ -12,17 +12,25 @@ const handleRejected = (state, action) => {
 const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
+    query: '',
     categories: [],
     sex: [],
     species: [],
     isLoading: false,
     error: null,
+
+    selectedCategory: '',
+    selectedSex: '',
+    selectedSpecies: '',
   },
   reducers: {
+    changeFilter: (state, action) => {
+      state.query = action.payload;
+    },
     setCategory: (state, action) => {
       state.selectedCategory = action.payload;
     },
-    setSex: (state, action) => {
+    setGender: (state, action) => {
       state.selectedSex = action.payload;
     },
     setSpecies: (state, action) => {
@@ -59,7 +67,12 @@ const filtersSlice = createSlice({
   },
 });
 
-export const { setCategory, setSex, setSpecies, resetFilters } =
-  filtersSlice.actions;
+export const {
+  setCategory,
+  setGender,
+  setSpecies,
+  resetFilters,
+  changeFilter,
+} = filtersSlice.actions;
 
 export default filtersSlice.reducer;

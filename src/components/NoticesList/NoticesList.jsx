@@ -36,8 +36,10 @@ export default function NoticesList() {
   return (
     <>
       <div className={style.container}>
-        <Title text={'Find your favorite pet'} />
-        <Filters />
+        <Title className={style.textNotices} text={'Find your favorite pet'} />
+        <div className={style.filters}>
+          <Filters />
+        </div>
         <ul className={style.list}>
           {notices.map((item) => (
             <li className={style.item} key={item._id}>

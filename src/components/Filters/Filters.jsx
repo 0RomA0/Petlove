@@ -14,7 +14,8 @@ import {
   fetchSex,
   fetchSpecies,
 } from '../../redux/filters/operations';
-import { setCategory, setSpecies } from '../../redux/filters/slice';
+import { setCategory, setGender, setSpecies } from '../../redux/filters/slice';
+import SearchField from '../SearchField/SearchField';
 
 export default function Filters() {
   const [categoryOpen, setCategoryOpen] = useState(false);
@@ -26,8 +27,8 @@ export default function Filters() {
   const categories = useSelector(selectCategories);
   const selectedCategory = useSelector(selectSelectedCategory);
 
-  const sex = useSelector(selectSex);
-  const selectedsex = useSelector(selectSelectedSex);
+  const gender = useSelector(selectSex);
+  const selectedSex = useSelector(selectSelectedSex);
 
   const species = useSelector(selectSpecies);
   const selectedSpecies = useSelector(selectSelectedSpecies);
@@ -42,6 +43,7 @@ export default function Filters() {
     <div className={style.container}>
       {/* category */}
       <div className={style.filterContainer}>
+        <SearchField />
         <div className={style.selectWrapper}>
           <div
             className={style.selectHeader}
@@ -90,7 +92,7 @@ export default function Filters() {
             className={style.selectHeader}
             onClick={() => setSexOpen(!sexOpen)}
           >
-            {selectedsex || 'Sex'}
+            {selectedSex || 'By gender'}
             <svg className={style.icon}>
               <use
                 href={`/sprite.svg#${
@@ -102,12 +104,12 @@ export default function Filters() {
 
           {sexOpen && (
             <ul className={style.selectList}>
-              {sex.map((item) => (
+              {gender.map((item) => (
                 <li
                   key={item}
                   className={item === selectedCategory ? style.active : ''}
                   onClick={() => {
-                    dispatch(selectSex(item));
+                    dispatch(setGender(item));
                     setSexOpen(false);
                   }}
                 >
@@ -117,7 +119,7 @@ export default function Filters() {
               <li
                 className={style.clearItem}
                 onClick={() => {
-                  dispatch(selectSex(''));
+                  dispatch(setGender(''));
                   setSexOpen(false);
                 }}
               >
@@ -134,7 +136,7 @@ export default function Filters() {
             className={style.selectHeader}
             onClick={() => setSpeciesOpen(!speciesOpen)}
           >
-            {selectedCategory || 'Species'}
+            {selectedSpecies || 'By type'}
             <svg className={style.icon}>
               <use
                 href={`/sprite.svg#${

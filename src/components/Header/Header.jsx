@@ -20,7 +20,7 @@ export default function Header() {
             to="/home"
             className={isHome ? style.logoHome : style.logoBlack}
           >
-            <svg width="106" height="28">
+            <svg className={style.icon}>
               <use
                 href={`/sprite.svg#${
                   isHome ? 'icon-logo-home' : 'icon-logo-header'

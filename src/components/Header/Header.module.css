@@ -9,9 +9,15 @@
   cursor: pointer;
 }
 
+.icon {
+  width: 106px;
+  height: 28px;
+}
+
 /* Base style */
 .defaultContainer {
+  width: 1153px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin: 0 auto;
 }
