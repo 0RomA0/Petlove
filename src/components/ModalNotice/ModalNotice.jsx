@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useModalEffects } from '../../utils/useModalEffects';
 import style from './ModalNotice.module.css';
 
 export default function ModalNotice({
@@ -14,17 +14,7 @@ export default function ModalNotice({
   AnimalText,
   AnimalPrice,
 }) {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]);
+  useModalEffects(isOpen, onClose);
 
   if (!isOpen) return null;
 

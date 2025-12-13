@@ -5,3 +5,9 @@
   margin: 0 auto;
   background: #f9f9f9;
 }
+
+.refreshingText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

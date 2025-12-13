@@ -16,13 +16,13 @@ import {
 } from '../../redux/filters/operations';
 import { setCategory, setGender, setSpecies } from '../../redux/filters/slice';
 import SearchField from '../SearchField/SearchField';
+import { setPage } from '../../redux/notices/slice';
+import { fetchNotices } from '../../redux/notices/operations';
 
-export default function Filters() {
+export default function Filters({ value, onChange }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [sexOpen, setSexOpen] = useState(false);
   const [speciesOpen, setSpeciesOpen] = useState(false);
-
-  const dispatch = useDispatch();
 
   const categories = useSelector(selectCategories);
   const selectedCategory = useSelector(selectSelectedCategory);
@@ -32,6 +32,38 @@ export default function Filters() {
 
   const species = useSelector(selectSpecies);
   const selectedSpecies = useSelector(selectSelectedSpecies);
+
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(
+      fetchNotices({
+        page: 1,
+        limit: 6,
+        keyword: value,
+        category: selectedCategory,
+        sex: selectedSex,
+        species: selectedSpecies,
+      }),
+    );
+    dispatch(setPage(1));
+  };
+
+  const handleClear = () => {
+    onChange('');
+    dispatch(
+      fetchNotices({
+        page: 1,
+        limit: 6,
+        keyword: '',
+        category: selectedCategory,
+        sex: selectedSex,
+        species: selectedSpecies,
+      }),
+    );
+    dispatch(setPage(1));
+  };
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -43,7 +75,12 @@ export default function Filters() {
     <div className={style.container}>
       {/* category */}
       <div className={style.filterContainer}>
-        <SearchField />
+        <SearchField
+          value={value}
+          onChange={onChange}
+          onClear={handleClear}
+          onSearch={handleSearch}
+        />
         <div className={style.selectWrapper}>
           <div
             className={style.selectHeader}

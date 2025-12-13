@@ -171,7 +171,7 @@
 
   width: 100%;
   height: 42px;
-  padding: 12px 200px 12px 12px;
+  padding: 12px 50px 12px 12px;
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   font-family: var(--font-family);
@@ -247,4 +247,113 @@
   stroke-width: 1.8px;
   stroke: #262626;
   fill: none;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.iconChevronWrapper {
+  position: absolute;
+  top: 55%;
+  right: 0%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.icon {
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
+  stroke: #262626;
+  fill: none;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 190px;
+}
+
+.selectHeader {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 16px 115px 16px 16px;
+  width: 210px;
+  height: 42px;
+  background: #fff;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.selectList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 15px;
+  height: 126px;
+  box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
+  background: #fff;
+  overflow-y: auto;
+  z-index: 10;
+  list-style: none;
+  padding: 8px 0;
+  margin: 4px 0 0 0;
+}
+
+.selectList li {
+  padding: 8px 16px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.selectList li.active {
+  color: #101828;
+}
+
+.selectList li:hover {
+  background-color: #f0f0f0;
+}
+
+.error {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+}
+
+.iconCloudWrapper {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.wrapperPaw {
+}
+
+.svgWrapperPaw {
+}
+
+.iconPaw {
 }

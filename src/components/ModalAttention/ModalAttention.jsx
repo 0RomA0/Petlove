@@ -1,24 +1,9 @@
-import { useEffect } from 'react';
 import style from './ModalAttention.module.css';
 import { NavLink } from 'react-router-dom';
+import { useModalEffects } from '../../utils/useModalEffects';
 
 export default function ModalAttention({ isOpen, onClose }) {
-  useEffect(() => {
-    if (!isOpen) return;
-
-    document.body.style.overflow = 'hidden';
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [isOpen, onClose]);
+  useModalEffects(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -53,10 +38,14 @@ export default function ModalAttention({ isOpen, onClose }) {
             </div>
 
             <div className={style.btnContainer}>
-              <NavLink to="/login" className={style.loginBtn}>
+              <NavLink to="/login" className={style.loginBtn} onClick={onClose}>
                 Log In
               </NavLink>
-              <NavLink to="/register" className={style.resistrBtn}>
+              <NavLink
+                to="/register"
+                className={style.resistrBtn}
+                onClick={onClose}
+              >
                 Registration
               </NavLink>
             </div>

@@ -2,10 +2,24 @@ import * as Yup from 'yup';
 import style from './AddPetForm.module.css';
 import toast, { Toaster } from 'react-hot-toast';
 // import { NavLink } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSpecies } from '../../redux/filters/selectors';
+import { fetchSpecies } from '../../redux/filters/operations';
 
 export default function AddPetForm() {
+  const [speciesOpen, setSpeciesOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSpecies());
+  }, [dispatch]);
+
+  const species = useSelector(selectSpecies);
+
   const validationSchema = Yup.object({
     title: Yup.string().required('Title is required'),
     name: Yup.string().required('Name is required'),
@@ -29,6 +43,8 @@ export default function AddPetForm() {
   const {
     register,
     handleSubmit,
+    setValue,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -42,8 +58,14 @@ export default function AddPetForm() {
     },
   });
 
-  const onSubmit = async () => {
+  const selectedSpecies = useWatch({
+    control,
+    name: 'species',
+  });
+
+  const onSubmit = async (data) => {
     toast.success('Succes created!');
+    console.log(data);
   };
 
   return (
@@ -94,16 +116,44 @@ export default function AddPetForm() {
         </div>
         {errors.sex && <p className={style.error}>{errors.sex.message}</p>}
 
+        <div className={style.wrapperPaw}>
+          <div className={style.svgWrapperPaw}>
+            <svg className={style.iconPaw}>
+              <use href="/sprite.svg#icon-paw" />
+            </svg>
+          </div>
+        </div>
+
         {/* Inputs */}
         <div className={style.inputContainer}>
-          <input
-            className={style.inputImgUrl}
-            placeholder="Image URL"
-            {...register('imgUrl')}
-          />
-          {errors.imgUrl && (
-            <p className={style.error}>{errors.imgUrl.message}</p>
-          )}
+          <div className={style.contentPhoto}>
+            <input
+              className={style.inputImgUrl}
+              placeholder="Image URL"
+              {...register('imgUrl')}
+            />
+            {errors.imgUrl && (
+              <p className={style.error}>{errors.imgUrl.message}</p>
+            )}
+
+            <div>
+              <div className={style.photoWrapper}>
+                <input
+                  type="file"
+                  placeholder="Upload photo"
+                  className={style.inputPhoto}
+                />
+                <div className={style.iconCloudWrapper}>
+                  <svg className={style.iconCloud}>
+                    <use href="/sprite.svg#icon-upload-cloud" />
+                  </svg>
+                </div>
+              </div>
+              {errors.birthday && (
+                <p className={style.error}>{errors.birthday.message}</p>
+              )}
+            </div>
+          </div>
 
           <input
             className={style.inputTitle}
@@ -122,35 +172,86 @@ export default function AddPetForm() {
           {errors.name && <p className={style.error}>{errors.name.message}</p>}
 
           <div className={style.wrapperBirthSpecie}>
-            <div className={style.birthdayWrapper}>
-              <input
-                type="text"
-                placeholder="00.00.0000"
-                className={style.inputBirthday}
-                {...register('birthday')}
-              />
-              <div className={style.iconCalendarWrapper}>
-                <svg className={style.iconCalendar}>
-                  <use href="/sprite.svg#icon-calendar-1" />
-                </svg>
+            <div>
+              <div className={style.birthdayWrapper}>
+                <input
+                  type="text"
+                  placeholder="00.00.0000"
+                  className={style.inputBirthday}
+                  {...register('birthday')}
+                />
+                <div className={style.iconCalendarWrapper}>
+                  <svg className={style.iconCalendar}>
+                    <use href="/sprite.svg#icon-calendar-1" />
+                  </svg>
+                </div>
               </div>
+              {errors.birthday && (
+                <p className={style.error}>{errors.birthday.message}</p>
+              )}
             </div>
-            {errors.birthday && (
-              <p className={style.error}>{errors.birthday.message}</p>
-            )}
 
-            <input
-              className={style.inputSpecies}
-              placeholder="Species"
-              {...register('species')}
-            />
-            {errors.species && (
-              <p className={style.error}>{errors.species.message}</p>
-            )}
+            {/* species */}
+            <div>
+              {' '}
+              <input type="hidden" {...register('species')} />
+              <div className={style.selectWrapper}>
+                <div
+                  className={style.selectHeader}
+                  onClick={() => setSpeciesOpen(!speciesOpen)}
+                >
+                  {selectedSpecies || 'Type of pet'}
+                  <div className={style.iconChevronWrapper}>
+                    <svg className={style.icon}>
+                      <use
+                        href={`/sprite.svg#${
+                          speciesOpen ? 'icon-chevron-up' : 'icon-chevron-down'
+                        }`}
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {speciesOpen && (
+                  <ul className={style.selectList}>
+                    {species.map((item) => (
+                      <li
+                        key={item}
+                        className={item === selectedSpecies ? style.active : ''}
+                        onClick={() => {
+                          setValue('species', item, {
+                            shouldValidate: true,
+                            shouldDirty: true,
+                          });
+                          setSpeciesOpen(false);
+                        }}
+                      >
+                        {item}
+                      </li>
+                    ))}
+                    <li
+                      className={style.clearItem}
+                      onClick={() => {
+                        setValue('species', '', {
+                          shouldValidate: true,
+                          shouldDirty: true,
+                        });
+                        setSpeciesOpen(false);
+                      }}
+                    >
+                      Clear
+                    </li>
+                  </ul>
+                )}
+              </div>
+              {errors.species && (
+                <p className={style.error}>{errors.species.message}</p>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className={style.buttons}>
+        <div className={style.buttonsWrapper}>
           <button type="button" className={style.backBtn}>
             Back
           </button>

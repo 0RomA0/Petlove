@@ -1,45 +1,10 @@
 import style from './NoticesList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import NoticesItem from '../NoticesItem/NoticesItem';
-import { fetchNotices } from '../../redux/notices/operations';
-import {
-  selectNotices,
-  selectIsLoading,
-  selectNoticesTotalPages,
-  selectNoticesPage,
-} from '../../redux/notices/selectors';
-import Pagination from '../Pagination/Pagination';
-import Title from '../Title/Title';
-import Filters from '../Filters/Filters';
 
-export default function NoticesList() {
-  const dispatch = useDispatch();
-  const notices = useSelector(selectNotices);
-  const isLoading = useSelector(selectIsLoading);
-  const page = useSelector(selectNoticesPage);
-  const totalPages = useSelector(selectNoticesTotalPages);
-
-  // console.log(notices);
-  useEffect(() => {
-    dispatch(fetchNotices({ page, limit: 6 }));
-  }, [dispatch, page]);
-
-  const handlePageChange = (newPage) => {
-    dispatch(fetchNotices({ page: newPage, limit: 6 }));
-  };
-
-  if (!isLoading && notices.length === 0) {
-    return <p> No data </p>;
-  }
-
+export default function NoticesList({ notices }) {
   return (
     <>
       <div className={style.container}>
-        <Title className={style.textNotices} text={'Find your favorite pet'} />
-        <div className={style.filters}>
-          <Filters />
-        </div>
         <ul className={style.list}>
           {notices.map((item) => (
             <li className={style.item} key={item._id}>
@@ -58,12 +23,6 @@ export default function NoticesList() {
             </li>
           ))}
         </ul>
-
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          onChange={handlePageChange}
-        />
       </div>
     </>
   );

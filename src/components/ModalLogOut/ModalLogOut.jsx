@@ -1,19 +1,8 @@
-import { useEffect } from 'react';
+import { useModalEffects } from '../../utils/useModalEffects';
 import style from './ModalLogOut.module.css';
 
 export default function ModalLogOut({ isOpen, onClose, onConfirm }) {
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [onClose]);
+  useModalEffects(isOpen, onClose);
 
   if (!isOpen) return null;
 

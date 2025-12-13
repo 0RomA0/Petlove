@@ -21,7 +21,11 @@ const noticeSlice = createSlice({
     error: null,
   },
 
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchNotices.pending, handlePending)
@@ -34,5 +38,7 @@ const noticeSlice = createSlice({
       });
   },
 });
+
+export const { setPage } = noticeSlice.actions;
 
 export default noticeSlice.reducer;

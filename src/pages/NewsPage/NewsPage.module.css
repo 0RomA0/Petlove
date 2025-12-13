@@ -1,0 +1,41 @@
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 96px;
+}
+
+.wrapperError {
+  border-radius: 50px;
+  width: 300px;
+  height: 200px;
+  background: #f6b83d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.noDataText {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 97%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-align: center;
+}
+
+.span {
+  color: rgba(255, 255, 255, 0.4);
+}

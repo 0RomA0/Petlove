@@ -33,7 +33,7 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p> Refreshing user... </p>
+    <p className={style.refreshingText}> Refreshing user... </p>
   ) : (
     <div className={style.container}>
       <Routes>
