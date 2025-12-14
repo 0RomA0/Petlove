@@ -17,6 +17,10 @@
   outline: none;
 }
 
+.btnLogOut:hover {
+  background: #f7d28f;
+}
+
 .btnLogOutHome {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 30px;

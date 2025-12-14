@@ -69,11 +69,21 @@
   width: 86px;
   height: 86px;
   margin: 0 auto;
+  margin-bottom: 12px;
+  overflow: hidden;
 }
 
 .iconPaw {
   width: 44px;
   height: 44px;
+}
+
+/* IMG */
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* RADIO BUTTON */
@@ -132,6 +142,11 @@
   cursor: pointer;
 }
 
+.submitBtn:hover {
+  background: #f7d28f;
+  color: #000;
+}
+
 .backBtn {
   border-radius: 30px;
   padding: 14px 67px;
@@ -147,6 +162,13 @@
   color: #262626;
   border: none;
   cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.backBtn:hover {
+  background-color: #c7c5c5;
+  color: #fff;
 }
 
 .inputTitle,
@@ -164,6 +186,11 @@
   letter-spacing: -0.02em;
   color: rgba(38, 38, 38, 1);
   box-sizing: border-box;
+}
+
+.inputUrlWrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .inputImgUrl {
@@ -342,18 +369,47 @@
 }
 
 .iconCloudWrapper {
-  position: absolute;
-  top: 50%;
-  right: 8%;
-  transform: translateY(-50%);
   pointer-events: none;
 }
 
 .wrapperPaw {
 }
 
-.svgWrapperPaw {
+.contentPhoto {
+  display: flex;
+  gap: 8px;
 }
 
-.iconPaw {
+.photoWrapper {
+  position: relative;
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.uploadButton {
+  border-radius: 30px;
+  padding: 12px 16px;
+  width: 146px;
+  height: 42px;
+  background: #fff4df;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #262626;
+  display: flex;
+  gap: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.iconCloudWrapper {
+}
+
+.iconCloud {
+  width: 18px;
+  height: 18px;
 }

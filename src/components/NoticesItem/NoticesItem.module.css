@@ -9,7 +9,15 @@
   position: relative;
 }
 
-.noticesImg {
+.cardImgWrapperProfile {
+  border-radius: 16px;
+  width: 292px;
+  height: 162px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imgNotices {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -23,9 +31,14 @@
   height: 114px;
 }
 
+.wrapperProfile {
+  width: 292px;
+  height: 112px;
+}
+
 .textContent {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   margin-top: 24px;
   margin-bottom: 8px;
@@ -37,16 +50,28 @@
   font-size: 18px;
   line-height: 133%;
   color: #2b2b2a;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reating {
+  display: flex;
+  align-items: center;
+}
+
+.starIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .starIcon {
   fill: #ffc531;
   width: 16px;
   height: 16px;
-}
-
-.reating {
-  display: flex;
 }
 
 .reatingNumb {
@@ -60,6 +85,14 @@
 .content {
   display: flex;
   width: 315px;
+  height: auto;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.contentProfile {
+  display: flex;
+  width: 292px;
   height: auto;
   gap: 20px;
   margin-bottom: 16px;
@@ -114,11 +147,8 @@
   justify-content: space-between;
 }
 
-.btnLearnMore {
+.btnLearnMoreBase {
   border-radius: 30px;
-  padding: 14px 89px;
-  width: 257px;
-  height: 48px;
   background: #f6b83d;
 
   font-family: var(--font-family);
@@ -132,9 +162,20 @@
   outline: none;
 }
 
-.btnLearnMore:hover {
-  background-color: #fff4df;
-  color: #f6b83d;
+.btnLearnMoreBase:hover {
+  background: #f7d28f;
+}
+
+.btnLearnMoreNotices {
+  padding: 14px 89px;
+  width: 257px;
+  height: 48px;
+}
+
+.btnLearnMoreProfile {
+  padding: 12px 79px;
+  width: 238px;
+  height: 44px;
 }
 
 .btnHeart {
@@ -151,7 +192,10 @@
   background: #fbe7c1;
 }
 
-.heartIcon {
+.icon {
   width: 18px;
   height: 18px;
+  stroke-width: 1.5px;
+  stroke: #f6b83d;
+  fill: none;
 }

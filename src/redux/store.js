@@ -4,6 +4,7 @@ import FriendsReducer from './friends/slice';
 import NoticesReducer from './notices/slice';
 import AuthReducer from './auth/slice';
 import FiltersReducer from './filters/slice';
+import FavoritesReducer from './favorites/slice';
 
 import {
   persistStore,
@@ -25,6 +26,17 @@ const authPersistConfig = {
 
 const persistedAuthReducer = persistReducer(authPersistConfig, AuthReducer);
 
+const favoritesPersistConfig = {
+  key: 'favorites',
+  storage,
+  whitelist: ['ids'],
+};
+
+const persistedFavoritesReducer = persistReducer(
+  favoritesPersistConfig,
+  FavoritesReducer,
+);
+
 export const store = configureStore({
   reducer: {
     news: NewsReducer,
@@ -32,6 +44,7 @@ export const store = configureStore({
     notices: NoticesReducer,
     auth: persistedAuthReducer,
     filters: FiltersReducer,
+    favorites: persistedFavoritesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

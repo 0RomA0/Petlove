@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import style from './UserBar.module.css';
 
 export default function UserBar({ isHome, userName }) {
@@ -9,7 +10,9 @@ export default function UserBar({ isHome, userName }) {
             <use href="/sprite.svg#icon-user" />
           </svg>
         </div>
-        <p className={isHome ? style.textHome : style.text}>{userName}</p>
+        <NavLink to="/profile" className={isHome ? style.textHome : style.text}>
+          {userName}
+        </NavLink>
       </div>
     </>
   );

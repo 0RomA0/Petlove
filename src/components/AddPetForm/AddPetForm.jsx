@@ -8,9 +8,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSpecies } from '../../redux/filters/selectors';
 import { fetchSpecies } from '../../redux/filters/operations';
+import { NavLink } from 'react-router-dom';
 
 export default function AddPetForm() {
   const [speciesOpen, setSpeciesOpen] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -43,6 +45,7 @@ export default function AddPetForm() {
   const {
     register,
     handleSubmit,
+    reset,
     setValue,
     control,
     formState: { errors },
@@ -63,9 +66,16 @@ export default function AddPetForm() {
     name: 'species',
   });
 
+  const handlePhoto = (e) => {
+    const file = e.target.files[0];
+
+    setPhotoPreview(URL.createObjectURL(file));
+  };
+
   const onSubmit = async (data) => {
     toast.success('Succes created!');
     console.log(data);
+    reset();
   };
 
   return (
@@ -118,40 +128,49 @@ export default function AddPetForm() {
 
         <div className={style.wrapperPaw}>
           <div className={style.svgWrapperPaw}>
-            <svg className={style.iconPaw}>
-              <use href="/sprite.svg#icon-paw" />
-            </svg>
+            {photoPreview ? (
+              <img src={photoPreview} alt="Pet" className={style.previewImg} />
+            ) : (
+              <svg className={style.iconPaw}>
+                <use href="/sprite.svg#icon-paw" />
+              </svg>
+            )}
           </div>
         </div>
 
         {/* Inputs */}
         <div className={style.inputContainer}>
           <div className={style.contentPhoto}>
-            <input
-              className={style.inputImgUrl}
-              placeholder="Image URL"
-              {...register('imgUrl')}
-            />
-            {errors.imgUrl && (
-              <p className={style.error}>{errors.imgUrl.message}</p>
-            )}
+            <div className={style.inputUrlWrapper}>
+              <input
+                className={style.inputImgUrl}
+                placeholder="Image URL"
+                {...register('imgUrl')}
+              />
+              {errors.imgUrl && (
+                <p className={style.error}>{errors.imgUrl.message}</p>
+              )}
+            </div>
 
             <div>
               <div className={style.photoWrapper}>
                 <input
+                  id="photo"
                   type="file"
-                  placeholder="Upload photo"
-                  className={style.inputPhoto}
+                  accept="image/*"
+                  className={style.hiddenFileInput}
+                  onChange={handlePhoto}
                 />
-                <div className={style.iconCloudWrapper}>
-                  <svg className={style.iconCloud}>
-                    <use href="/sprite.svg#icon-upload-cloud" />
-                  </svg>
-                </div>
+
+                <label htmlFor="photo" className={style.uploadButton}>
+                  {'Upload photo'}
+                  <div className={style.iconCloudWrapper}>
+                    <svg className={style.iconCloud}>
+                      <use href="/sprite.svg#icon-upload-cloud" />
+                    </svg>
+                  </div>
+                </label>
               </div>
-              {errors.birthday && (
-                <p className={style.error}>{errors.birthday.message}</p>
-              )}
             </div>
           </div>
 
@@ -252,9 +271,9 @@ export default function AddPetForm() {
         </div>
 
         <div className={style.buttonsWrapper}>
-          <button type="button" className={style.backBtn}>
+          <NavLink to="/profile" className={style.backBtn}>
             Back
-          </button>
+          </NavLink>
 
           <button type="submit" className={style.submitBtn}>
             Submit

@@ -29,6 +29,12 @@
   line-height: 100%;
   letter-spacing: -0.03em;
   color: #262626;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.text:hover {
+  color: #f6b83d;
 }
 
 .textHome {
@@ -38,4 +44,10 @@
   line-height: 100%;
   letter-spacing: -0.03em;
   color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.textHome:hover {
+  color: #fbe7c1;
 }

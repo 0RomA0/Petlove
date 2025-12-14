@@ -1,0 +1,26 @@
+.container {
+  width: 664px;
+}
+
+.containerText {
+  display: flex;
+  width: 458px;
+  height: 60px;
+  padding: 180px 0 0 103px;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #262626;
+}
+
+.span {
+  font-weight: 700;
+  color: #f6b83d;
+  padding: 0 4px;
+}

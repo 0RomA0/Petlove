@@ -1,3 +1,5 @@
+/* NoticesPage */
+
 .list {
   width: 1153px;
   height: auto;
@@ -14,6 +16,26 @@
   border-radius: 16px;
   padding: 24px;
   width: 363px;
+  height: auto;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* ProfilePage */
+/* Profile */
+
+.listProfile {
+  width: 664px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.itemProfile {
+  border-radius: 16px;
+  padding: 14px 14px 24px 14px;
+  width: 320px;
   height: auto;
   background: #fff;
   box-sizing: border-box;
