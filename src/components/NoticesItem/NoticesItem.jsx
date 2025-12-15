@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import style from './NoticesItem.module.css';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
-import { useState } from 'react';
+import {
+  selectFavoriteNotices,
+  selectIsLoggedIn,
+} from '../../redux/auth/selectors';
+import { useEffect, useState } from 'react';
 import ModalAttention from '../ModalAttention/ModalAttention';
 import ModalNotice from '../ModalNotice/ModalNotice';
-import { selectFavoriteIds } from '../../redux/favorites/selectors';
-import { addFavorite, removeFavorite } from '../../redux/favorites/operations';
+import { getCurrentUserFull } from '../../redux/auth/operations';
+import { addFavorite, removeFavorite } from '../../redux/notices/operations';
 
 export default function NoticesItem({
   isProfilePage,
@@ -20,6 +23,7 @@ export default function NoticesItem({
   noticesText,
   noticesPrice,
   noticesId,
+  type,
 }) {
   const [modalAttentionOpen, setModalAttentionOpen] = useState(false);
   const [modalNoticeOpen, setModalNoticeOpen] = useState(false);
@@ -28,9 +32,15 @@ export default function NoticesItem({
   const dispatch = useDispatch();
 
   const loggedIn = useSelector(selectIsLoggedIn);
-  const favoriteIds = useSelector(selectFavoriteIds);
+  const favorites = useSelector(selectFavoriteNotices);
 
-  const isFavorite = favoriteIds.includes(noticesId);
+  const isFavorite = favorites.some((notice) => notice._id === noticesId);
+
+  useEffect(() => {
+    if (loggedIn) {
+      dispatch(getCurrentUserFull());
+    }
+  }, [dispatch, loggedIn]);
 
   const handleLearnMore = () => {
     if (!loggedIn) {
@@ -54,18 +64,25 @@ export default function NoticesItem({
     setModalNoticeOpen(true);
   };
 
-  const handlefavorite = () => {
+  const handlefavorite = async () => {
     if (!loggedIn) {
       setModalAttentionOpen(true);
       return;
     }
 
-    if (isFavorite) {
-      dispatch(removeFavorite(noticesId));
-    } else {
-      dispatch(addFavorite(noticesId));
+    try {
+      if (isFavorite) {
+        await removeFavorite(noticesId);
+      } else {
+        await addFavorite(noticesId);
+      }
+
+      await dispatch(getCurrentUserFull()).unwrap();
+    } catch (error) {
+      console.error(error);
     }
   };
+
   return (
     <>
       <div className={style.container}>
@@ -131,23 +148,25 @@ export default function NoticesItem({
                   isProfilePage
                     ? style.btnLearnMoreProfile
                     : style.btnLearnMoreNotices
-                }`}
+                }
+                ${type === 'viewed' ? style.btnLearnMoreViewed : ''}`}
                 onClick={handleLearnMore}
               >
                 Learn more
               </button>
-
-              <button className={style.btnHeart} onClick={handlefavorite}>
-                <svg className={style.icon}>
-                  <use
-                    href={
-                      loggedIn && isFavorite
-                        ? '/sprite.svg#icon-trash'
-                        : '/sprite.svg#icon-heart'
-                    }
-                  />
-                </svg>
-              </button>
+              {type !== 'viewed' && (
+                <button className={style.btnHeart} onClick={handlefavorite}>
+                  <svg className={style.icon}>
+                    <use
+                      href={
+                        loggedIn && isFavorite
+                          ? '/sprite.svg#icon-trash'
+                          : '/sprite.svg#icon-heart'
+                      }
+                    />
+                  </svg>
+                </button>
+              )}
             </div>
           </div>
         </div>

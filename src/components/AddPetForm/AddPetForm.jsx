@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import style from './AddPetForm.module.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 // import { NavLink } from 'react-router-dom';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,10 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectSpecies } from '../../redux/filters/selectors';
 import { fetchSpecies } from '../../redux/filters/operations';
 import { NavLink } from 'react-router-dom';
+import { AddPet } from '../../redux/auth/operations';
 
 export default function AddPetForm() {
   const [speciesOpen, setSpeciesOpen] = useState(false);
   const [photoPreview, setPhotoPreview] = useState(null);
+  const [photoFile, setPhotoFile] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -36,7 +38,7 @@ export default function AddPetForm() {
     species: Yup.string().required('Species is required'),
 
     birthday: Yup.string()
-      .matches(/^\d{2}.\d{2}.\d{4}$/, 'Birthday must be DD.MM.YYYY')
+      .matches(/^\d{4}-\d{2}-\d{2}$/, 'Birthday must be YYYY-MM-DD')
       .required('Birthday is required'),
 
     sex: Yup.string().required('Sex is required'),
@@ -68,14 +70,34 @@ export default function AddPetForm() {
 
   const handlePhoto = (e) => {
     const file = e.target.files[0];
-
     setPhotoPreview(URL.createObjectURL(file));
+    setPhotoFile(file);
   };
 
   const onSubmit = async (data) => {
-    toast.success('Succes created!');
-    console.log(data);
-    reset();
+    const formData = new FormData();
+    formData.append('title', data.title);
+    formData.append('name', data.name);
+    formData.append('birthday', data.birthday);
+    formData.append('sex', data.sex);
+    formData.append('species', data.species);
+
+    if (photoFile) {
+      formData.append('image', photoFile);
+    } else if (data.imgUrl) {
+      formData.append('image', data.imgUrl);
+    }
+
+    dispatch(AddPet(formData))
+      .unwrap()
+      .then(() => {
+        toast.success('Succes added!');
+        reset();
+        setPhotoPreview(null);
+      })
+      .catch(() => {
+        toast.error('Error adding pet');
+      });
   };
 
   return (
@@ -195,7 +217,7 @@ export default function AddPetForm() {
               <div className={style.birthdayWrapper}>
                 <input
                   type="text"
-                  placeholder="00.00.0000"
+                  placeholder="0000-00-00"
                   className={style.inputBirthday}
                   {...register('birthday')}
                 />
@@ -280,8 +302,6 @@ export default function AddPetForm() {
           </button>
         </div>
       </form>
-
-      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

@@ -1,0 +1,21 @@
+.btntrash {
+  border-radius: 30px;
+  padding: 15px;
+  width: 48px;
+  height: 48px;
+  background: #fff4df;
+  cursor: pointer;
+  border: none;
+}
+
+.btntrash:hover {
+  background: #fbe7c1;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5px;
+  stroke: #f6b83d;
+  fill: none;
+}

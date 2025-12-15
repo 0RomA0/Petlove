@@ -25,3 +25,11 @@ export const fetchNotices = createAsyncThunk(
     }
   },
 );
+
+export const addFavorite = (id) => {
+  return api.post(`/notices/favorites/add/${id}`);
+};
+
+export const removeFavorite = (id) => {
+  return api.delete(`/notices/favorites/remove/${id}`);
+};

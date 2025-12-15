@@ -1,0 +1,89 @@
+.iconPhotoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapperPaw {
+}
+
+.svgWrapperPaw {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff4df;
+  border-radius: 100px;
+  padding: 10px;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.iconPaw {
+  width: 50px;
+  height: 50px;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoWrapper {
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.uploadButton {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #262626;
+  cursor: pointer;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 133%;
+  color: #2b2b2a;
+  margin-bottom: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 16px 200px 16px 16px;
+  width: 440px;
+  height: 52px;
+  box-sizing: border-box;
+}
+
+.input:hover,
+.input:focus {
+  border: 1px solid #f6b83d;
+  outline: none;
+  box-shadow: 0 0 4px rgba(247, 154, 5, 0.999);
+}
+
+.input:not(:placeholder-shown) {
+  border: 1px solid #f6b83d;
+}

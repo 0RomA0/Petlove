@@ -44,3 +44,13 @@
   background: #fbe7c1;
   color: #f6b83d;
 }
+
+.btnLogOutProfile {
+  background-color: #fff4df;
+  color: #f6b83d;
+}
+
+.btnLogOutProfile:hover {
+  background: #fae2b5;
+  color: #fff;
+}

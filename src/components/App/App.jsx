@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRefreshing } from '../../redux/auth/selectors';
 import { refreshUser } from '../../redux/auth/operations';
+import { Toaster } from 'react-hot-toast';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const MainLayout = lazy(() => import('../MainLayout/MainLayout'));
@@ -64,6 +65,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Routes>
+
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

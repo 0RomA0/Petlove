@@ -1,24 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import NoticesList from '../NoticesList/NoticesList';
 import style from './MyNotices.module.css';
-import { useEffect } from 'react';
 import {
-  selectFavoriteIds,
   selectFavoriteNotices,
-} from '../../redux/favorites/selectors';
-import { fetchFavoriteNotices } from '../../redux/favorites/operations';
+  selectViewed,
+} from '../../redux/auth/selectors';
 
-export default function MyNotices() {
-  const dispatch = useDispatch();
+export default function MyNotices({ type }) {
+  const favorites = useSelector(selectFavoriteNotices);
+  const viewed = useSelector(selectViewed);
 
-  const ids = useSelector(selectFavoriteIds);
-  const notices = useSelector(selectFavoriteNotices);
-
-  useEffect(() => {
-    if (ids.length) {
-      dispatch(fetchFavoriteNotices(ids));
-    }
-  }, [dispatch, ids]);
+  const notices = type === 'viewed' ? viewed : favorites;
 
   if (notices.length === 0) {
     return (
@@ -38,7 +30,7 @@ export default function MyNotices() {
   return (
     <>
       <div className={style.container}>
-        <NoticesList notices={notices} />
+        <NoticesList notices={notices} type={type} />
       </div>
     </>
   );

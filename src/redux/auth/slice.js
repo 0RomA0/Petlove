@@ -1,5 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, logInUser, logOutUser, refreshUser } from './operations';
+import {
+  registerUser,
+  logInUser,
+  logOutUser,
+  refreshUser,
+  getCurrentUserFull,
+  // getCurrentUser,
+  AddPet,
+  deletePet,
+} from './operations';
 const handlePending = (state) => {
   state.loading = true;
 };
@@ -16,6 +25,9 @@ const usersSlice = createSlice({
       name: null,
       email: null,
     },
+    pets: [],
+    noticesFavorites: [],
+    noticesViewed: [],
     loading: false,
     error: null,
     token: null,
@@ -58,7 +70,38 @@ const usersSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
+      })
+      .addCase(getCurrentUserFull.pending, handlePending)
+      .addCase(getCurrentUserFull.rejected, handleRejected)
+      .addCase(getCurrentUserFull.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.user = action.payload;
+        state.noticesFavorites = action.payload.noticesFavorites;
+        state.noticesViewed = action.payload.noticesViewed;
+      })
+      .addCase(AddPet.pending, handlePending)
+      .addCase(AddPet.rejected, handleRejected)
+      .addCase(AddPet.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+
+        state.pets.push(action.payload);
+      })
+      .addCase(deletePet.fulfilled, (state, action) => {
+        state.user.pets = state.user.pets.filter(
+          (pet) => pet._id !== action.payload,
+        );
       });
+    // .addCase(getCurrentUser.pending, handlePending)
+    //   .addCase(getCurrentUser.rejected, handleRejected)
+    //   .addCase(getCurrentUser.fulfilled, (state, action) => {
+    //     state.loading = false;
+    //     state.error = null;
+    //     state.user = action.payload;
+    //     state.noticesFavorites = action.payload.noticesFavorites;
+    //     state.noticesViewed = action.payload.noticesViewed;
+    //   });
   },
 });
 

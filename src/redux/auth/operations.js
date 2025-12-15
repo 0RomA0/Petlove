@@ -68,3 +68,55 @@ export const refreshUser = createAsyncThunk(
     },
   },
 );
+
+export const getCurrentUser = createAsyncThunk(
+  'auth/getCurrentUserFull',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get('/users/current');
+      // console.log('Current user:', data);
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+export const getCurrentUserFull = createAsyncThunk(
+  'auth/getCurrentUserFull',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get('/users/current/full');
+      // console.log('Current user full:', data);
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+export const AddPet = createAsyncThunk(
+  'auth/AddPet',
+  async (petData, thunkAPI) => {
+    try {
+      const data = await api.post('/users/current/pets/add', petData);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+export const deletePet = createAsyncThunk(
+  'auth/DeletePet',
+  async (id, thunkAPI) => {
+    try {
+      const data = await api.delete(`/users/current/pets/remove/${id}`);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);

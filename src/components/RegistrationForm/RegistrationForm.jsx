@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import style from './RegistrationForm.module.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/auth/operations';
@@ -231,8 +231,6 @@ export default function RegistrationForm() {
           </p>
         </div>
       </form>
-
-      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }

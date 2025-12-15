@@ -4,9 +4,9 @@ import { logOutUser } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ModalLogOut from '../ModalLogOut/ModalLogOut';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
-export default function LogOutBtn({ isHome }) {
+export default function LogOutBtn({ isHome, isProfilePage }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +25,9 @@ export default function LogOutBtn({ isHome }) {
     <>
       <div className={isHome ? style.containerHome : style.container}>
         <button
-          className={isHome ? style.btnLogOutHome : style.btnLogOut}
+          className={`${isHome ? style.btnLogOutHome : style.btnLogOut} ${
+            isProfilePage ? style.btnLogOutProfile : style.btnLogOut
+          }`}
           type="button"
           onClick={() => setIsModalOpen(true)}
         >
@@ -38,7 +40,6 @@ export default function LogOutBtn({ isHome }) {
           onConfirm={handleLogOut}
         />
       </div>
-      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }

@@ -22,10 +22,6 @@ export default function Nav({ isHome }) {
         <NavLink to="/friends" className={NavLinkActiveClass}>
           Our friends
         </NavLink>
-
-        {/* <NavLink to="/favorites" className={NavLinkActiveClass}>
-          Favorites
-        </NavLink> */}
       </nav>
     </div>
   );

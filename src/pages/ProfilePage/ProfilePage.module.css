@@ -71,14 +71,12 @@
   padding: 14px;
   width: 142px;
   height: 48px;
-  background-color: #f6b83d;
 
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.03em;
-  color: #fff;
   cursor: pointer;
   border: none;
 }
@@ -92,18 +90,26 @@
   padding: 14px 45px;
   width: 142px;
   height: 48px;
-  background-color: #fff;
 
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.03em;
-  color: #262626;
   cursor: pointer;
   border: none;
 }
 
 .btnViewed:hover {
   background: #fbe7c1;
+}
+
+.baseBtn {
+  background-color: #fff;
+  color: #262626;
+}
+
+.isActiveBtn {
+  background-color: #f6b83d;
+  color: #fff;
 }

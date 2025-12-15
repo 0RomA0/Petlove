@@ -2,7 +2,7 @@ import style from './NoticesList.module.css';
 import NoticesItem from '../NoticesItem/NoticesItem';
 import { useLocation } from 'react-router-dom';
 
-export default function NoticesList({ notices }) {
+export default function NoticesList({ notices, type }) {
   const { pathname } = useLocation();
   const isProfilePage = pathname === '/profile';
 
@@ -28,6 +28,7 @@ export default function NoticesList({ notices }) {
                 noticesText={item.comment}
                 noticesPrice={item.price}
                 noticesId={item._id}
+                type={type}
               />
             </li>
           ))}

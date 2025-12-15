@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import style from './LoginForm.module.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -165,8 +165,6 @@ export default function LoginForm() {
           </p>
         </div>
       </form>
-
-      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }
