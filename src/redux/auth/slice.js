@@ -79,6 +79,7 @@ const usersSlice = createSlice({
         state.user = action.payload;
         state.noticesFavorites = action.payload.noticesFavorites;
         state.noticesViewed = action.payload.noticesViewed;
+        state.pets = action.payload.pets;
       })
       .addCase(AddPet.pending, handlePending)
       .addCase(AddPet.rejected, handleRejected)
@@ -89,9 +90,7 @@ const usersSlice = createSlice({
         state.pets.push(action.payload);
       })
       .addCase(deletePet.fulfilled, (state, action) => {
-        state.user.pets = state.user.pets.filter(
-          (pet) => pet._id !== action.payload,
-        );
+        state.pets = state.pets.filter((pet) => pet._id !== action.payload);
       });
     // .addCase(getCurrentUser.pending, handlePending)
     //   .addCase(getCurrentUser.rejected, handleRejected)

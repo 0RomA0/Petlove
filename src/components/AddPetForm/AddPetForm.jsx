@@ -14,7 +14,6 @@ import { AddPet } from '../../redux/auth/operations';
 export default function AddPetForm() {
   const [speciesOpen, setSpeciesOpen] = useState(false);
   const [photoPreview, setPhotoPreview] = useState(null);
-  const [photoFile, setPhotoFile] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -28,7 +27,7 @@ export default function AddPetForm() {
     title: Yup.string().required('Title is required'),
     name: Yup.string().required('Name is required'),
 
-    imgUrl: Yup.string()
+    imgURL: Yup.string()
       .matches(
         /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
         'Image URL must be a valid image link',
@@ -56,7 +55,7 @@ export default function AddPetForm() {
     defaultValues: {
       title: '',
       name: '',
-      imgUrl: '',
+      imgURL: '',
       species: '',
       birthday: '',
       sex: '',
@@ -70,25 +69,12 @@ export default function AddPetForm() {
 
   const handlePhoto = (e) => {
     const file = e.target.files[0];
+    if (!file) return;
     setPhotoPreview(URL.createObjectURL(file));
-    setPhotoFile(file);
   };
 
   const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append('title', data.title);
-    formData.append('name', data.name);
-    formData.append('birthday', data.birthday);
-    formData.append('sex', data.sex);
-    formData.append('species', data.species);
-
-    if (photoFile) {
-      formData.append('image', photoFile);
-    } else if (data.imgUrl) {
-      formData.append('image', data.imgUrl);
-    }
-
-    dispatch(AddPet(formData))
+    dispatch(AddPet(data))
       .unwrap()
       .then(() => {
         toast.success('Succes added!');
@@ -167,10 +153,10 @@ export default function AddPetForm() {
               <input
                 className={style.inputImgUrl}
                 placeholder="Image URL"
-                {...register('imgUrl')}
+                {...register('imgURL')}
               />
-              {errors.imgUrl && (
-                <p className={style.error}>{errors.imgUrl.message}</p>
+              {errors.imgURL && (
+                <p className={style.error}>{errors.imgURL.message}</p>
               )}
             </div>
 

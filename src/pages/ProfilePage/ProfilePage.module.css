@@ -13,18 +13,21 @@
   background: #fff;
   box-sizing: border-box;
 }
-
-.rightContainer {
-  margin-top: 40px;
+.btnTitleWrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 54px;
-  line-height: 100%;
-  letter-spacing: -0.03em;
-  color: #262626;
+  font-size: 18px;
+  line-height: 133%;
+  color: #2b2b2a;
+}
+
+.rightContainer {
+  margin-top: 40px;
 }
 
 .btnAddPet {

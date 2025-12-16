@@ -101,8 +101,8 @@ export const AddPet = createAsyncThunk(
   'auth/AddPet',
   async (petData, thunkAPI) => {
     try {
-      const data = await api.post('/users/current/pets/add', petData);
-      return data;
+      const res = await api.post('/users/current/pets/add', petData);
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -113,8 +113,8 @@ export const deletePet = createAsyncThunk(
   'auth/DeletePet',
   async (id, thunkAPI) => {
     try {
-      const data = await api.delete(`/users/current/pets/remove/${id}`);
-      return data;
+      const res = await api.delete(`/users/current/pets/remove/${id}`);
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

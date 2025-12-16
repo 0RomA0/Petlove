@@ -43,13 +43,17 @@ export default function ProfilePage() {
         <div className={style.leftContainer}>
           <ModalEditUser />
           <div className={style.contentWrapper}>
+            <div className={style.btnTitleWrapper}>
+              <h3 className={style.title}> My pets </h3>
+              <NavLink to="/add-pet" className={style.btnAddPet}>
+                Add pet
+                <svg className={style.iconplus}>
+                  <use href="/sprite.svg#icon-plus" />
+                </svg>
+              </NavLink>
+            </div>
+
             <PetsList pets={pets} />
-            <NavLink to="/add-pet" className={style.btnAddPet}>
-              Add pet
-              <svg className={style.iconplus}>
-                <use href="/sprite.svg#icon-plus" />
-              </svg>
-            </NavLink>
 
             <LogOutBtn isProfilePage={isProfilePage} />
           </div>

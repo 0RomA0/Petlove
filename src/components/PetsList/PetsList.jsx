@@ -3,12 +3,12 @@ import style from './PetsList.module.css';
 
 export default function PetsList({ pets }) {
   return (
-    <ul>
+    <ul className={style.list}>
       {pets.map((pet) => (
         <li className={style.item} key={pet._id}>
           <PetsItem
             petId={pet._id}
-            petImg={pet.imgUrl}
+            petImg={pet.imgURL}
             petTitle={pet.title}
             petName={pet.name}
             petBirthday={pet.birthday}

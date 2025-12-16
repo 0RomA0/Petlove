@@ -316,7 +316,7 @@
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.5);
+  color: #262626;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -352,7 +352,7 @@
 }
 
 .selectList li.active {
-  color: #101828;
+  color: #f6b83d;
 }
 
 .selectList li:hover {

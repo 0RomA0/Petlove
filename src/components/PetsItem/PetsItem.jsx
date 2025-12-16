@@ -19,17 +19,32 @@ export default function PetsItem({
 
   return (
     <div className={style.container}>
-      <img src={petImg} alt={petName} />
-      <h3>{petTitle}</h3>
+      <div className={style.imgWrapper}>
+        <img className={style.imgPet} src={petImg} alt={petName} />
+      </div>
+      <div className={style.content}>
+        <h3 className={style.title}>{petTitle}</h3>
+
+        <div className={style.infoWrapper}>
+          <p className={style.info}>
+            Name <span className={style.infoTexr}> {petName} </span>
+          </p>
+          <p className={style.info}>
+            Birthday <span className={style.infoTexr}> {petBirthday}</span>
+          </p>
+          <p className={style.info}>
+            Sex <span className={style.infoTexr}> {petSex} </span>
+          </p>
+          <p className={style.info}>
+            Species <span className={style.infoTexr}> {petSpecies} </span>
+          </p>
+        </div>
+      </div>
       <button className={style.btnTrash} onClick={handleDelete}>
         <svg className={style.icon}>
           <use href="/sprite.svg#icon-trash" />
         </svg>
       </button>
-      <p>Name: {petName}</p>
-      <p>Birthday: {petBirthday}</p>
-      <p>Sex: {petSex}</p>
-      <p>Type: {petSpecies}</p>
     </div>
   );
 }

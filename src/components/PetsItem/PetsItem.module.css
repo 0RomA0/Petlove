@@ -1,14 +1,84 @@
-.btntrash {
+.container {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 243px;
+  height: 62px;
+  margin: auto 0;
+}
+
+.btnTitleWrapper {
+  display: flex;
+}
+
+.infoWrapper {
+  display: flex;
+  width: 243px;
+  height: 32px;
+  gap: 27px;
+}
+
+.imgWrapper {
+  display: flex;
+  margin-right: 25px;
+}
+
+.imgPet {
+  border-radius: 100px;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  color: #2b2b2a;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.infoTexr {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #262626;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btnTrash {
   border-radius: 30px;
-  padding: 15px;
-  width: 48px;
-  height: 48px;
+  padding: 10px;
+  width: 38px;
+  height: 38px;
   background: #fff4df;
   cursor: pointer;
   border: none;
 }
 
-.btntrash:hover {
+.btnTrash:hover {
   background: #fbe7c1;
 }
 
