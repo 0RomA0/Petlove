@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react';
 import ModalEditUser from '../../components/ModalEditUser/ModalEditUser';
 import LogOutBtn from '../../components/LogOutBtn/LogOutBtn';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn, selectPets } from '../../redux/auth/selectors';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { getCurrentUserFull } from '../../redux/auth/operations';
-import PetsList from '../../components/PetsList/PetsList';
+import PetsBlock from '../../components/PetsBlock/PetsBlock';
+import UserInfoForm from '../../components/UserInfoForm/UserInfoForm';
+import EditUserBtn from '../../components/EditUserBtn/EditUserBtn';
 
 export default function ProfilePage() {
   const { pathname } = useLocation();
@@ -18,8 +20,6 @@ export default function ProfilePage() {
 
   const dispatch = useDispatch();
   const loggedIn = useSelector(selectIsLoggedIn);
-
-  const pets = useSelector(selectPets);
 
   useEffect(() => {
     if (loggedIn) {
@@ -41,19 +41,10 @@ export default function ProfilePage() {
     <>
       <div className={style.container}>
         <div className={style.leftContainer}>
-          <ModalEditUser />
+          <EditUserBtn />
+          <UserInfoForm />
           <div className={style.contentWrapper}>
-            <div className={style.btnTitleWrapper}>
-              <h3 className={style.title}> My pets </h3>
-              <NavLink to="/add-pet" className={style.btnAddPet}>
-                Add pet
-                <svg className={style.iconplus}>
-                  <use href="/sprite.svg#icon-plus" />
-                </svg>
-              </NavLink>
-            </div>
-
-            <PetsList pets={pets} />
+            <PetsBlock />
 
             <LogOutBtn isProfilePage={isProfilePage} />
           </div>

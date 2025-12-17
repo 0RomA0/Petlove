@@ -1,3 +1,55 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  position: absolute;
+  background: #fff;
+  border-radius: 30px;
+  height: auto;
+  padding: 50px;
+  animation: appear 0.2s ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 0;
+  border: none;
+  border-radius: 50%;
+}
+
+.closeIcon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2px;
+  stroke: #262626;
+}
+
 .iconPhotoWrapper {
   display: flex;
   flex-direction: column;
@@ -72,7 +124,7 @@
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   padding: 16px 200px 16px 16px;
-  width: 440px;
+  width: 380px;
   height: 52px;
   box-sizing: border-box;
 }
@@ -86,4 +138,96 @@
 
 .input:not(:placeholder-shown) {
   border: 1px solid #f6b83d;
+}
+
+.inputUrlWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputImgUrl {
+  max-width: 226px;
+
+  width: 100%;
+  height: 42px;
+  padding: 12px 50px 12px 12px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 42px;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 1);
+  box-sizing: border-box;
+}
+
+.iconCloudWrapper {
+  pointer-events: none;
+}
+
+.wrapperPaw {
+}
+
+.contentPhoto {
+  display: flex;
+  gap: 8px;
+}
+
+.photoWrapper {
+  position: relative;
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.uploadButton {
+  border-radius: 30px;
+  padding: 12px 16px;
+  width: 146px;
+  height: 42px;
+  background: #fff4df;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #262626;
+  display: flex;
+  gap: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.iconCloudWrapper {
+}
+
+.iconCloud {
+  width: 18px;
+  height: 18px;
+}
+
+.submitBtn {
+  border-radius: 30px;
+  padding: 16px 173px;
+  width: 380px;
+  height: 52px;
+  background: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+}
+
+.submitBtn:hover {
+  background: #f7d28f;
+  color: #000;
 }

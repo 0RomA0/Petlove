@@ -1,0 +1,45 @@
+.btnTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 133%;
+  color: #2b2b2a;
+}
+
+.btnAddPet {
+  border-radius: 30px;
+  padding: 10px 20px;
+  width: 118px;
+  height: 40px;
+  background-color: #f6b83d;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+
+  display: flex;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+.btnAddPet:hover {
+  background: #f7d28f;
+}
+
+.iconplus {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5px;
+  stroke: #fff;
+}

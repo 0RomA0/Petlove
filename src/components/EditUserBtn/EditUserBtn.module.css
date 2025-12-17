@@ -1,0 +1,26 @@
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnTrash {
+  border-radius: 30px;
+  padding: 10px;
+  width: 38px;
+  height: 38px;
+  background: #fff4df;
+  cursor: pointer;
+  border: none;
+}
+
+.btnTrash:hover {
+  background: #fbe7c1;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5px;
+  stroke: #f6b83d;
+  fill: none;
+}
