@@ -36,20 +36,21 @@ export default function UserInfoForm() {
     <>
       <form>
         <div className={style.iconPhotoWrapper}>
-          <div className={style.wrapperPaw}>
-            <div className={style.svgWrapperPaw}>
-              {photoPreview ? (
-                <img
-                  src={photoPreview}
-                  alt="User"
-                  className={style.previewImg}
-                />
-              ) : (
-                <svg className={style.iconPaw}>
-                  <use href="/sprite.svg#icon-user" />
-                </svg>
-              )}
-            </div>
+          <div className={style.wrapperUser}>
+            <p className={style.textUser}> User </p>
+            <svg className={style.iconUser}>
+              <use href="/sprite.svg#icon-user02" />
+            </svg>
+          </div>
+
+          <div className={style.svgWrapperUserAvatar}>
+            {photoPreview ? (
+              <img src={photoPreview} alt="User" className={style.previewImg} />
+            ) : (
+              <svg className={style.iconAvatar}>
+                <use href="/sprite.svg#icon-user" />
+              </svg>
+            )}
           </div>
 
           <div className={style.photoWrapper}>

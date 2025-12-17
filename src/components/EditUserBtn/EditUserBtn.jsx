@@ -15,13 +15,11 @@ export default function EditUserBtn() {
 
   return (
     <>
-      <div className={style.btnContainer}>
-        <button className={style.btnTrash} onClick={handleOpen}>
-          <svg className={style.icon}>
-            <use href="/sprite.svg#icon-edit" />
-          </svg>
-        </button>
-      </div>
+      <button className={style.btnTrash} onClick={handleOpen}>
+        <svg className={style.icon}>
+          <use href="/sprite.svg#icon-edit" />
+        </svg>
+      </button>
 
       {modalIsOpen && (
         <ModalEditUser isOpen={modalIsOpen} onClose={handleClose} />

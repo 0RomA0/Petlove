@@ -1,9 +1,8 @@
-.btnContainer {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .btnTrash {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 10;
   border-radius: 30px;
   padding: 10px;
   width: 38px;

@@ -2,7 +2,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import style from './ProfilePage.module.css';
 import MyNotices from '../../components/MyNotices/MyNotices';
 import { useEffect, useState } from 'react';
-import ModalEditUser from '../../components/ModalEditUser/ModalEditUser';
 import LogOutBtn from '../../components/LogOutBtn/LogOutBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
@@ -42,7 +41,9 @@ export default function ProfilePage() {
       <div className={style.container}>
         <div className={style.leftContainer}>
           <EditUserBtn />
+
           <UserInfoForm />
+
           <div className={style.contentWrapper}>
             <PetsBlock />
 
