@@ -220,7 +220,6 @@ export default function AddPetForm() {
 
             {/* species */}
             <div>
-              {' '}
               <input type="hidden" {...register('species')} />
               <div className={style.selectWrapper}>
                 <div

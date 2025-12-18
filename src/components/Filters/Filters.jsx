@@ -23,7 +23,10 @@ export default function Filters({ value, onChange }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [sexOpen, setSexOpen] = useState(false);
   const [speciesOpen, setSpeciesOpen] = useState(false);
-
+  const [sortParams, setSortParams] = useState({
+    byPrice: false,
+    byPopularity: false,
+  });
   const categories = useSelector(selectCategories);
   const selectedCategory = useSelector(selectSelectedCategory);
 
@@ -45,6 +48,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        ...sortParams,
       }),
     );
     dispatch(setPage(1));
@@ -60,6 +64,8 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        // location = '',
+        ...sortParams,
       }),
     );
     dispatch(setPage(1));
@@ -70,6 +76,45 @@ export default function Filters({ value, onChange }) {
     dispatch(fetchSex());
     dispatch(fetchSpecies());
   }, [dispatch]);
+
+  const handleSortChange = (type) => {
+    const newSort = { byPrice: false, byPopularity: false };
+    if (type) newSort[type] = true;
+    setSortParams(newSort);
+
+    dispatch(
+      fetchNotices({
+        page: 1,
+        limit: 6,
+        keyword: value,
+        category: selectedCategory,
+        sex: selectedSex,
+        species: selectedSpecies,
+        ...newSort,
+      }),
+    );
+    dispatch(setPage(1));
+  };
+
+  const handleClearSort = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const clearedSort = { byPrice: false, byPopularity: false };
+    setSortParams(clearedSort);
+
+    dispatch(
+      fetchNotices({
+        page: 1,
+        limit: 6,
+        keyword: value,
+        category: selectedCategory,
+        sex: selectedSex,
+        species: selectedSpecies,
+        ...clearedSort,
+      }),
+    );
+    dispatch(setPage(1));
+  };
 
   return (
     <div className={style.container}>
@@ -209,6 +254,96 @@ export default function Filters({ value, onChange }) {
             </ul>
           )}
         </div>
+      </div>
+
+      <div className={style.stickWrapper}>
+        <div className={style.stick}></div>
+      </div>
+
+      <div className={style.radioBtnWrapper}>
+        <label className={style.radioLabel}>
+          <input
+            type="radio"
+            name="sort"
+            value="popular"
+            className={style.radio}
+          />
+          Popular
+          <button
+            type="button"
+            className={style.closeBtn}
+            onClick={handleClearSort}
+          >
+            <svg className={style.closeIcon}>
+              <use href="/sprite.svg#icon-cross-small" />
+            </svg>
+          </button>
+        </label>
+
+        <label className={style.radioLabel}>
+          <input
+            type="radio"
+            name="sort"
+            value="unpopular"
+            className={style.radio}
+            checked={sortParams.byPopularity}
+            onChange={() => handleSortChange('byPopularity')}
+          />
+          Unpopular
+          {sortParams.byPopularity && (
+            <button
+              type="button"
+              className={style.closeBtn}
+              onClick={handleClearSort}
+            >
+              <svg className={style.closeIcon}>
+                <use href="/sprite.svg#icon-cross-small" />
+              </svg>
+            </button>
+          )}
+        </label>
+
+        <label className={style.radioLabel}>
+          <input
+            type="radio"
+            name="sort"
+            value="cheap"
+            className={style.radio}
+            checked={sortParams.byPrice}
+            onChange={() => handleSortChange('byPrice')}
+          />
+          Cheap
+          {sortParams.byPrice && (
+            <button
+              type="button"
+              className={style.closeBtn}
+              onClick={handleClearSort}
+            >
+              <svg className={style.closeIcon}>
+                <use href="/sprite.svg#icon-cross-small" />
+              </svg>
+            </button>
+          )}
+        </label>
+
+        <label className={style.radioLabel}>
+          <input
+            type="radio"
+            name="sort"
+            value="expensive"
+            className={style.radio}
+          />
+          Expensive
+          <button
+            type="button"
+            className={style.closeBtn}
+            onClick={handleClearSort}
+          >
+            <svg className={style.closeIcon}>
+              <use href="/sprite.svg#icon-cross-small" />
+            </svg>
+          </button>
+        </label>
       </div>
     </div>
   );

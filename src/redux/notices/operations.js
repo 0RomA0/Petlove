@@ -11,14 +11,20 @@ export const fetchNotices = createAsyncThunk(
       category = '',
       sex = '',
       species = '',
+      byPrice = false,
+      byPopularity = false,
     } = {},
     thunkAPI,
   ) => {
     try {
-      const res = await api.get('/notices', {
-        params: { page, limit, keyword, category, sex, species },
-      });
+      const params = { page, limit, keyword, category, sex, species };
+
+      if (byPrice) params.byPrice = true;
+      if (byPopularity) params.byPopularity = true;
+
+      const res = await api.get('/notices', { params });
       // console.log(res.data);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -4,15 +4,17 @@
   height: 216px;
   background: #fff4df;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
   margin-top: 40px;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
 .filterContainer {
   display: flex;
   align-items: flex-end;
-  justify-content: center;
   gap: 10px;
 }
 
@@ -188,4 +190,76 @@
 
 .selectList::-webkit-scrollbar {
   width: 20px;
+}
+
+.stickWrapper {
+  margin: 20px 0;
+}
+
+.stick {
+  width: 1136px;
+  height: 1px;
+  background-color: rgba(38, 38, 38, 0.1);
+}
+
+/* RADIO BTN */
+
+.radioBtnWrapper {
+  width: auto;
+  height: 48px;
+  display: flex;
+  gap: 8px;
+}
+
+.radioLabel {
+  border-radius: 30px;
+  padding: 14px;
+  width: auto;
+  height: 48px;
+  background-color: #fff;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  display: flex;
+  gap: 8px;
+}
+
+.radioLabel:hover {
+  background-color: #f6b83d;
+  color: #fff;
+}
+
+.radio {
+  display: none;
+}
+
+.radioLabel:has(.radio:checked) {
+  background-color: #f6b83d;
+  color: #fff;
+}
+
+.closeBtn {
+  display: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2px;
+  stroke: #fff;
+}
+
+.radioLabel:has(.radio:checked) .closeBtn {
+  display: block;
 }
