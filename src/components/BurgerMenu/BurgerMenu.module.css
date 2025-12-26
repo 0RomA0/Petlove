@@ -1,0 +1,49 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu {
+  position: relative;
+  width: 218px;
+  height: auto;
+  background: #fff;
+  padding: 24px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 0;
+  border: none;
+  border-radius: 50%;
+}
+
+.closeIcon {
+  stroke-width: 3px;
+  stroke: #262626;
+  fill: none;
+  transition: stroke 0.3s ease;
+}
+
+.closeBtn:hover .closeIcon {
+  stroke: #fff;
+}
+
+.closeBtn:hover {
+  background-color: #ffdc86;
+}

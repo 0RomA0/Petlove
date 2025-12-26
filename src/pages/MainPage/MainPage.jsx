@@ -20,7 +20,7 @@ export default function MainPage() {
         <Loader color="#fff" />
       ) : (
         <NavLink to={'/home'} className={style.btn}>
-          <svg>
+          <svg className={style.logoSvg}>
             <use href="/sprite.svg#icon-logo-main" />
           </svg>
         </NavLink>

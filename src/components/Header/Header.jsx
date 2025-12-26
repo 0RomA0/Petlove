@@ -5,8 +5,12 @@ import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { useState } from 'react';
 
 export default function Header() {
+  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+
   const { pathname } = useLocation();
   const isHome = pathname === '/home';
 
@@ -29,11 +33,37 @@ export default function Header() {
             </svg>
           </Link>
 
-          <Nav isHome={isHome} />
+          <div className={style.navWrapper}>
+            <Nav isHome={isHome} />
+          </div>
 
-          {isLogin ? <UserNav isHome={isHome} /> : <AuthNav isHome={isHome} />}
+          <div className={style.authWrapper}>
+            {isLogin ? (
+              <UserNav isHome={isHome} />
+            ) : (
+              <AuthNav isHome={isHome} />
+            )}
+          </div>
+
+          <button
+            className={style.burgerBtn}
+            onClick={() => setOpenBurgerMenu(true)}
+          >
+            <svg
+              className={isHome ? style.isHomeIconBurger : style.iconBurger}
+              width="32"
+              height="32"
+            >
+              <use href="/sprite.svg#icon-burger-menu" />
+            </svg>
+          </button>
         </div>
       </header>
+
+      <BurgerMenu
+        isOpen={openBurgerMenu}
+        onClose={() => setOpenBurgerMenu(false)}
+      />
     </>
   );
 }

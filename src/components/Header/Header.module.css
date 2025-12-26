@@ -3,6 +3,18 @@
 .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .container {
+    justify-content: center;
+  }
 }
 
 .logo {
@@ -16,8 +28,73 @@
 
 /* Base style */
 .defaultContainer {
-  width: 1153px;
+  max-width: 375px;
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  justify-content: space-between;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .defaultContainer {
+    max-width: 1153px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
+.burgerBtn {
+  display: block;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .burgerBtn {
+    display: none;
+  }
+}
+
+.iconBurger {
+  fill: none;
+  stroke-width: 3px;
+  stroke: #262626;
+}
+
+.isHomeIconBurger {
+  stroke: #fff;
+}
+
+.navWrapper,
+.authWrapper {
+  display: none;
+}
+
+.burgerBtn {
+  display: block;
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .navWrapper,
+  .authWrapper {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .burgerBtn {
+    display: none;
+  }
 }
