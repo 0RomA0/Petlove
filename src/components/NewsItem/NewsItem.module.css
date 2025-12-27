@@ -9,12 +9,28 @@
 }
 
 .contentContainet {
-  width: 361px;
-  height: 194px;
-  padding: 28px 0;
+  width: 335px;
+  height: 149px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .contentContainet {
+    width: 340px;
+    height: 194px;
+    padding: 28px 0;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .contentContainet {
+    width: 361px;
+  }
 }
 
 .textContent {
@@ -23,11 +39,11 @@
 .title {
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 20px;
-  line-height: 130%;
+  font-size: 16px;
+  line-height: 125%;
   letter-spacing: -0.03em;
   color: #262626;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 
   display: -webkit-box; /* важливо для багаторядкового обрізання */
   -webkit-line-clamp: 2; /* кількість рядків, які показуємо */
@@ -36,20 +52,42 @@
   text-overflow: ellipsis;
 }
 
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 20px;
+    line-height: 130%;
+    margin-bottom: 14px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+}
+
 .text {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
+  font-size: 14px;
+  line-height: 129%;
   letter-spacing: -0.02em;
   color: #262626;
-  margin-bottom: 28px;
+  margin-bottom: 19px;
 
   display: -webkit-box; /* важливо для багаторядкового обрізання */
   -webkit-line-clamp: 3; /* кількість рядків, які показуємо */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .text {
+    font-size: 16px;
+    line-height: 125%;
+    margin-bottom: 28px;
+  }
 }
 
 .content {
@@ -60,20 +98,36 @@
 .date {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
+  font-size: 14px;
+  line-height: 129%;
   letter-spacing: -0.02em;
   color: rgba(38, 38, 38, 0.5);
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .date {
+    font-size: 16px;
+    line-height: 125%;
+  }
 }
 
 .newsLink {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
+  font-size: 14px;
+  line-height: 129%;
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #f6b83d;
   cursor: pointer;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .newsLink {
+    font-size: 16px;
+    line-height: 125%;
+  }
 }

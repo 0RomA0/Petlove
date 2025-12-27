@@ -9,12 +9,6 @@
 
 /* Tablet */
 @media screen and (min-width: 768px) {
-  .container {
-  }
-}
-
-/* Desktop */
-@media screen and (min-width: 1280px) {
   .title {
     font-size: 54px;
   }

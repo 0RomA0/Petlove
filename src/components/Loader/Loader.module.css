@@ -1,33 +1,56 @@
 .circleLoader {
-  position: fixed; /* поверх всього */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; /* на весь екран */
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* поверх всіх елементів */
+  z-index: 9999;
 }
 
 .percent {
   position: absolute;
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 80px;
+  font-size: clamp(28px, 10vw, 80px);
   color: #0b0b0b;
+}
+
+.svg {
+  width: min(80vw, 320px);
+  height: min(80vw, 320px);
+  max-height: 80vh;
+  transform: rotate(-90deg);
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .svg {
+    width: 400px;
+    height: 400px;
+  }
 }
 
 circle {
   fill: none;
-  stroke: #0d0d0d;
-  stroke-width: 1;
-  stroke-dasharray: 1243; /* довжина кола */
-  stroke-dashoffset: 186; /* 85% заповнення */
+  stroke-width: 2px;
+  stroke-dasharray: 565;
+  stroke-dashoffset: 85;
+  stroke-linecap: round;
 }
 
-.circleLoader svg {
-  width: 398px;
-  height: 398px;
-  transform: rotate(-90deg);
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .container {
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .circle {
+    fill: none;
+    stroke-width: 2px;
+    stroke-dasharray: 565;
+    stroke-dashoffset: 85;
+    stroke-linecap: round;
+  }
 }

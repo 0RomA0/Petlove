@@ -9,9 +9,21 @@
 
 .wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 96px;
+  align-items: flex-start;
+  margin-top: 60px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 96px;
+    flex-direction: row;
+  }
 }
 
 .wrapperError {

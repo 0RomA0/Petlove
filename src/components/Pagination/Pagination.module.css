@@ -2,12 +2,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 11px;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .container {
+    gap: 24px;
+  }
 }
 
 .iconContainer {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .iconContainer {
+    gap: 8px;
+  }
 }
 
 .paginationBtn {
@@ -17,13 +31,22 @@
   border: 1px solid rgba(38, 38, 38, 0.05);
   background-color: transparent;
   padding: 0;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .paginationBtn {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .paginationBtn:hover {
@@ -65,11 +88,20 @@
 .number {
   border-radius: 100%;
   stroke-width: 1px;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .number {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .numberActive {
