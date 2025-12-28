@@ -8,13 +8,15 @@ export default function MainPage() {
 
   return (
     <div className={style.container}>
-      {loading && <Loader color="#fff" />}
-
-      <NavLink to="/home" className={style.btn}>
-        <svg className={style.logoSvg} onLoad={() => setLoading(false)}>
-          <use href="/sprite.svg#icon-logo-main" />
-        </svg>
-      </NavLink>
+      {loading ? (
+        <Loader color="#fff" onDone={() => setLoading(false)} />
+      ) : (
+        <NavLink to="/home" className={style.btn}>
+          <svg className={style.logoSvg}>
+            <use href="/sprite.svg#icon-logo-main" />
+          </svg>
+        </NavLink>
+      )}
     </div>
   );
 }

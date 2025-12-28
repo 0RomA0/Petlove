@@ -1,8 +1,8 @@
 import style from './Loader.module.css';
 
-export default function Loader({ color = '#0d0d0d' }) {
+export default function Loader({ color = '#0d0d0d', onDone }) {
   return (
-    <div className={style.circleLoader}>
+    <div className={style.circleLoader} onAnimationEnd={onDone}>
       <div className={style.percent} style={{ color }}>
         85%
       </div>
