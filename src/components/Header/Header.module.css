@@ -89,15 +89,37 @@
   display: block;
 }
 
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+  .authWrapper {
+    display: flex;
+  }
+}
+
 /* Desktop */
 @media screen and (min-width: 1280px) {
-  .navWrapper,
-  .authWrapper {
+  .navWrapper {
     display: flex;
     margin-left: auto;
   }
-
   .burgerBtn {
+    display: none;
+  }
+}
+
+.menuWrapper {
+  display: flex;
+}
+
+.mobileUser {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .mobileUser {
     display: none;
   }
 }

@@ -1,3 +1,4 @@
+/* UserInfoForm.module.css */
 .iconPhotoWrapper {
   position: relative;
   display: flex;
@@ -29,9 +30,10 @@
 }
 
 .previewImg {
-  width: 100%;
-  height: 100%;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .photoWrapper {
@@ -69,24 +71,21 @@
   margin-bottom: 40px;
 }
 
-.input {
+.text {
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   padding: 16px 200px 16px 16px;
   width: 440px;
   height: 52px;
   box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
-.input:hover,
-.input:focus {
+/* Клас для заповнених даних */
+.textFilled {
   border: 1px solid #f6b83d;
   outline: none;
   box-shadow: 0 0 4px rgba(247, 154, 5, 0.999);
-}
-
-.input:not(:placeholder-shown) {
-  border: 1px solid #f6b83d;
 }
 
 .wrapperUser {

@@ -5,6 +5,7 @@ import {
   logOutUser,
   refreshUser,
   getCurrentUserFull,
+  updateUser,
   // getCurrentUser,
   AddPet,
   deletePet,
@@ -80,6 +81,16 @@ const usersSlice = createSlice({
         state.noticesFavorites = action.payload.noticesFavorites;
         state.noticesViewed = action.payload.noticesViewed;
         state.pets = action.payload.pets;
+      })
+      .addCase(updateUser.pending, handlePending)
+      .addCase(updateUser.rejected, handleRejected)
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.user = {
+          ...state.user,
+          ...action.payload,
+        };
       })
       .addCase(AddPet.pending, handlePending)
       .addCase(AddPet.rejected, handleRejected)

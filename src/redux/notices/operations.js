@@ -11,6 +11,7 @@ export const fetchNotices = createAsyncThunk(
       category = '',
       sex = '',
       species = '',
+      city = '',
       byPrice = false,
       byPopularity = false,
     } = {},
@@ -18,7 +19,7 @@ export const fetchNotices = createAsyncThunk(
   ) => {
     try {
       const params = { page, limit, keyword, category, sex, species };
-
+      if (city) params.city = city;
       if (byPrice) params.byPrice = true;
       if (byPopularity) params.byPopularity = true;
 

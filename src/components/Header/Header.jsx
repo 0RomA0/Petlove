@@ -4,9 +4,10 @@ import style from './Header.module.css';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useState } from 'react';
+import UserBar from '../UserBar/UserBar';
 
 export default function Header() {
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
@@ -15,6 +16,7 @@ export default function Header() {
   const isHome = pathname === '/home';
 
   const isLogin = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   return (
     <>
@@ -45,18 +47,26 @@ export default function Header() {
             )}
           </div>
 
-          <button
-            className={style.burgerBtn}
-            onClick={() => setOpenBurgerMenu(true)}
-          >
-            <svg
-              className={isHome ? style.isHomeIconBurger : style.iconBurger}
-              width="32"
-              height="32"
+          <div className={style.menuWrapper}>
+            {isLogin && (
+              <div className={style.mobileUser}>
+                <UserBar isHome={isHome} userName={user.name} />
+              </div>
+            )}
+
+            <button
+              className={style.burgerBtn}
+              onClick={() => setOpenBurgerMenu(true)}
             >
-              <use href="/sprite.svg#icon-burger-menu" />
-            </svg>
-          </button>
+              <svg
+                className={isHome ? style.isHomeIconBurger : style.iconBurger}
+                width="32"
+                height="32"
+              >
+                <use href="/sprite.svg#icon-burger-menu" />
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 

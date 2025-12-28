@@ -17,6 +17,7 @@ import {
   selectSelectedSex,
   selectSelectedSpecies,
 } from '../../redux/filters/selectors';
+import { selectSelectedCity } from '../../redux/cities/selectors';
 
 export default function NoticesPage() {
   const [text, setText] = useState('');
@@ -30,19 +31,29 @@ export default function NoticesPage() {
   const selectedCategory = useSelector(selectSelectedCategory);
   const selectedSex = useSelector(selectSelectedSex);
   const selectedSpecies = useSelector(selectSelectedSpecies);
+  const selectedCity = useSelector(selectSelectedCity);
 
   useEffect(() => {
     dispatch(
       fetchNotices({
         page,
         limit: 6,
-        keyword: '',
+        keyword: text,
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        city: selectedCity?._id || '',
       }),
     );
-  }, [dispatch, selectedCategory, selectedSex, selectedSpecies]);
+  }, [
+    dispatch,
+    page,
+    selectedCategory,
+    selectedSex,
+    selectedSpecies,
+    selectedCity,
+    text,
+  ]);
 
   const handlePageChange = (newPage) => {
     dispatch(
@@ -53,6 +64,7 @@ export default function NoticesPage() {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        city: selectedCity?._id || '',
       }),
     );
   };
@@ -61,7 +73,7 @@ export default function NoticesPage() {
     return (
       <div className={style.wrapperError}>
         <p className={style.noDataText}>
-          <span className={style.span}>No data.</span> <br /> Pleas reload the
+          <span className={style.span}>No data.</span> <br /> Please reload the
           page
         </p>
       </div>

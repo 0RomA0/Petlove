@@ -4,6 +4,7 @@ import FriendsReducer from './friends/slice';
 import NoticesReducer from './notices/slice';
 import AuthReducer from './auth/slice';
 import FiltersReducer from './filters/slice';
+import CitiesReducer from './cities/slice';
 
 import {
   persistStore,
@@ -32,6 +33,7 @@ export const store = configureStore({
     notices: NoticesReducer,
     auth: persistedAuthReducer,
     filters: FiltersReducer,
+    cities: CitiesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

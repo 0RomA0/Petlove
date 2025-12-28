@@ -18,6 +18,7 @@ import { setCategory, setGender, setSpecies } from '../../redux/filters/slice';
 import SearchField from '../SearchField/SearchField';
 import { setPage } from '../../redux/notices/slice';
 import { fetchNotices } from '../../redux/notices/operations';
+import SearchFileLocation from '../SearchFileLocation/SearchFileLocation';
 
 export default function Filters({ value, onChange }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
@@ -27,6 +28,9 @@ export default function Filters({ value, onChange }) {
     byPrice: false,
     byPopularity: false,
   });
+
+  const [selectedCity, setSelectedCity] = useState(null);
+
   const categories = useSelector(selectCategories);
   const selectedCategory = useSelector(selectSelectedCategory);
 
@@ -48,6 +52,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        location: selectedCity?._id || '',
         ...sortParams,
       }),
     );
@@ -56,6 +61,7 @@ export default function Filters({ value, onChange }) {
 
   const handleClear = () => {
     onChange('');
+    setSelectedCity(null);
     dispatch(
       fetchNotices({
         page: 1,
@@ -64,7 +70,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
-        // location = '',
+        location: '',
         ...sortParams,
       }),
     );
@@ -90,6 +96,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        location: selectedCity?._id || '',
         ...newSort,
       }),
     );
@@ -110,6 +117,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
+        location: selectedCity?._id || '',
         ...clearedSort,
       }),
     );
@@ -118,7 +126,6 @@ export default function Filters({ value, onChange }) {
 
   return (
     <div className={style.container}>
-      {/* category */}
       <div className={style.filterContainer}>
         <SearchField
           value={value}
@@ -126,6 +133,7 @@ export default function Filters({ value, onChange }) {
           onClear={handleClear}
           onSearch={handleSearch}
         />
+
         <div className={style.selectWrapper}>
           <div
             className={style.selectHeader}
@@ -189,7 +197,7 @@ export default function Filters({ value, onChange }) {
               {gender.map((item) => (
                 <li
                   key={item}
-                  className={item === selectedCategory ? style.active : ''}
+                  className={item === selectedSex ? style.active : ''}
                   onClick={() => {
                     dispatch(setGender(item));
                     setSexOpen(false);
@@ -211,8 +219,7 @@ export default function Filters({ value, onChange }) {
           )}
         </div>
 
-        {/* species */}
-
+        {/* Species */}
         <div className={style.selectWrapper}>
           <div
             className={style.selectHeader}
@@ -254,6 +261,9 @@ export default function Filters({ value, onChange }) {
             </ul>
           )}
         </div>
+
+        {/* Search by city */}
+        <SearchFileLocation value={selectedCity} onChange={setSelectedCity} />
       </div>
 
       <div className={style.stickWrapper}>

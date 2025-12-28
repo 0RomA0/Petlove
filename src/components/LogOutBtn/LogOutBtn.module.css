@@ -17,6 +17,10 @@
   outline: none;
 }
 
+/* Tablet */
+@media screen and (min-width: 768px) {
+}
+
 .btnLogOut:hover {
   background: #f7d28f;
 }

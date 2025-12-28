@@ -97,6 +97,18 @@ export const getCurrentUserFull = createAsyncThunk(
   },
 );
 
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (userData, thunkAPI) => {
+    try {
+      const { data } = await api.patch('/users/current/edit', userData);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.response?.data?.message || e.message);
+    }
+  },
+);
+
 export const AddPet = createAsyncThunk(
   'auth/AddPet',
   async (petData, thunkAPI) => {
