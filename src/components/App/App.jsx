@@ -62,8 +62,16 @@ function App() {
           <Route path="/notices" element={<NoticesPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
         </Route>
+
+        <Route
+          path="profile"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProfilePage />
+            </Suspense>
+          }
+        />
       </Routes>
 
       <Toaster position="top-right" reverseOrder={false} />

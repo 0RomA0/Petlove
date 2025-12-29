@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import style from './AuthNav.module.css';
 
-export default function AuthNav({ isHome }) {
+export default function AuthNav({ isHome, className }) {
   return (
     <>
-      <div className={style.btnContainer}>
+      <div className={`${style.btnContainer} ${className || ''}`}>
         <NavLink
           to="/login"
           className={isHome ? style.btnLogInHome : style.btnLogInBase}

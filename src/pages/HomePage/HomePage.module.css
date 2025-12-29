@@ -2,6 +2,7 @@
   max-width: 375px;
   height: auto;
   padding: 10px 20px;
+  margin: 0 auto;
 }
 
 /* Tablet */
@@ -15,7 +16,7 @@
 /* Desktop */
 @media screen and (min-width: 1280px) {
   .container {
-    max-width: 1216px;
+    max-width: 1280px;
   }
 }
 

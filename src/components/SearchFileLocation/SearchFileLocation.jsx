@@ -15,6 +15,8 @@ export default function SearchFileLocation({ value, onChange }) {
   const cities = useSelector(selectCities);
   const loading = useSelector(selectCitiesLoading);
 
+  console.log(cities);
+
   useEffect(() => {
     if (inputValue.length >= 3) {
       dispatch(fetchCities(inputValue));
@@ -24,7 +26,7 @@ export default function SearchFileLocation({ value, onChange }) {
   const selectOptions = cities.map((city) => ({
     value: city._id,
     label: `${city.cityEn}, ${city.stateEn}`,
-    raw: city, // зберігаємо всю інформацію про місто
+    raw: city,
   }));
 
   return (

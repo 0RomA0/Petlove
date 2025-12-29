@@ -11,21 +11,24 @@ export const fetchNotices = createAsyncThunk(
       category = '',
       sex = '',
       species = '',
-      city = '',
+      locationId = '',
       byPrice = false,
       byPopularity = false,
     } = {},
     thunkAPI,
   ) => {
     try {
-      const params = { page, limit, keyword, category, sex, species };
-      if (city) params.city = city;
+      const params = { page, limit };
+
+      if (keyword) params.keyword = keyword;
+      if (category) params.category = category;
+      if (sex) params.sex = sex;
+      if (species) params.species = species;
+      if (locationId) params.locationId = locationId;
       if (byPrice) params.byPrice = true;
       if (byPopularity) params.byPopularity = true;
 
       const res = await api.get('/notices', { params });
-      // console.log(res.data);
-
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

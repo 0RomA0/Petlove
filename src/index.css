@@ -28,3 +28,9 @@ img {
   max-width: 100%;
   border-style: none;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

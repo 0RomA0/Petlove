@@ -1,9 +1,12 @@
 import style from './NoticesPage.module.css';
-import NotiscesList from '../../components/NoticesList/NoticesList';
+import NoticesList from '../../components/NoticesList/NoticesList';
 import Title from '../../components/Title/Title';
 import Filters from '../../components/Filters/Filters';
+import Pagination from '../../components/Pagination/Pagination';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+
 import { fetchNotices } from '../../redux/notices/operations';
 import {
   selectNotices,
@@ -11,18 +14,20 @@ import {
   selectNoticesTotalPages,
   selectNoticesPage,
 } from '../../redux/notices/selectors';
-import Pagination from '../../components/Pagination/Pagination';
+
 import {
   selectSelectedCategory,
   selectSelectedSex,
   selectSelectedSpecies,
 } from '../../redux/filters/selectors';
+
 import { selectSelectedCity } from '../../redux/cities/selectors';
 
 export default function NoticesPage() {
+  const dispatch = useDispatch();
+
   const [text, setText] = useState('');
 
-  const dispatch = useDispatch();
   const notices = useSelector(selectNotices);
   const isLoading = useSelector(selectIsLoading);
   const page = useSelector(selectNoticesPage);
@@ -42,17 +47,17 @@ export default function NoticesPage() {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
-        city: selectedCity?._id || '',
+        locationId: selectedCity?._id || '',
       }),
     );
   }, [
     dispatch,
     page,
+    text,
     selectedCategory,
     selectedSex,
     selectedSpecies,
     selectedCity,
-    text,
   ]);
 
   const handlePageChange = (newPage) => {
@@ -64,38 +69,39 @@ export default function NoticesPage() {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
-        city: selectedCity?._id || '',
+        locationId: selectedCity?._id || '',
       }),
     );
   };
 
-  if (!isLoading && notices.length === 0) {
-    return (
-      <div className={style.wrapperError}>
-        <p className={style.noDataText}>
-          <span className={style.span}>No data.</span> <br /> Please reload the
-          page
-        </p>
-      </div>
-    );
-  }
-
   return (
     <>
       <div className={style.contentContainer}>
-        <Title className={style.textNotices} text={'Find your favorite pet'} />
+        <Title className={style.textNotices} text="Find your favorite pet" />
         <div className={style.filters}>
           <Filters value={text} onChange={setText} />
         </div>
       </div>
 
-      <NotiscesList notices={notices} />
+      {!isLoading && notices.length === 0 ? (
+        <div className={style.wrapperError}>
+          <p className={style.noDataText}>
+            <span className={style.span}>No data.</span>
+            <br />
+            Please reload the page
+          </p>
+        </div>
+      ) : (
+        <NoticesList notices={notices} />
+      )}
 
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        onChange={handlePageChange}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onChange={handlePageChange}
+        />
+      )}
     </>
   );
 }

@@ -1,6 +1,4 @@
 .container {
-  display: flex;
-  justify-content: center;
   min-height: 100vh;
   margin: 0 auto;
   background: #f9f9f9;

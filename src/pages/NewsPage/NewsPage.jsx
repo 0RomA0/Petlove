@@ -28,30 +28,19 @@ export default function NewsPage() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(fetchNews({ page: 1, limit: 6, keyword: text }));
     dispatch(setPage(1));
+    dispatch(fetchNews({ page: 1, limit: 6, keyword: text }));
   };
 
   const handleClear = () => {
     setText('');
-    dispatch(fetchNews({ page: 1, limit: 6, keyword: '' }));
     dispatch(setPage(1));
+    dispatch(fetchNews({ page: 1, limit: 6, keyword: '' }));
   };
 
   const handlePageChange = (newPage) => {
     dispatch(fetchNews({ page: newPage, limit: 6, keyword: text }));
   };
-
-  if (!isLoading && news.length === 0) {
-    return (
-      <div className={style.wrapperError}>
-        <p className={style.noDataText}>
-          <span className={style.span}>No data.</span> <br /> Pleas reload the
-          page
-        </p>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -64,12 +53,26 @@ export default function NewsPage() {
           onSearch={handleSearch}
         />
       </div>
-      <NewsList news={news} />
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        onChange={handlePageChange}
-      />
+
+      {!isLoading && news.length === 0 ? (
+        <div className={style.wrapperError}>
+          <p className={style.noDataText}>
+            <span className={style.span}>No data.</span>
+            <br />
+            Please reload the page
+          </p>
+        </div>
+      ) : (
+        <NewsList news={news} />
+      )}
+
+      {totalPages > 1 && (
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onChange={handlePageChange}
+        />
+      )}
     </>
   );
 }

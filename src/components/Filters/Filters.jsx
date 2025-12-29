@@ -19,6 +19,8 @@ import SearchField from '../SearchField/SearchField';
 import { setPage } from '../../redux/notices/slice';
 import { fetchNotices } from '../../redux/notices/operations';
 import SearchFileLocation from '../SearchFileLocation/SearchFileLocation';
+import { selectSelectedCity } from '../../redux/cities/selectors';
+import { setCity, clearCity } from '../../redux/cities/slice';
 
 export default function Filters({ value, onChange }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
@@ -29,8 +31,6 @@ export default function Filters({ value, onChange }) {
     byPopularity: false,
   });
 
-  const [selectedCity, setSelectedCity] = useState(null);
-
   const categories = useSelector(selectCategories);
   const selectedCategory = useSelector(selectSelectedCategory);
 
@@ -39,6 +39,8 @@ export default function Filters({ value, onChange }) {
 
   const species = useSelector(selectSpecies);
   const selectedSpecies = useSelector(selectSelectedSpecies);
+
+  const selectedCity = useSelector(selectSelectedCity);
 
   const dispatch = useDispatch();
 
@@ -52,7 +54,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
-        location: selectedCity?._id || '',
+        locationId: selectedCity?._id || '',
         ...sortParams,
       }),
     );
@@ -61,19 +63,10 @@ export default function Filters({ value, onChange }) {
 
   const handleClear = () => {
     onChange('');
-    setSelectedCity(null);
-    dispatch(
-      fetchNotices({
-        page: 1,
-        limit: 6,
-        keyword: '',
-        category: selectedCategory,
-        sex: selectedSex,
-        species: selectedSpecies,
-        location: '',
-        ...sortParams,
-      }),
-    );
+    dispatch(clearCity());
+    dispatch(setCategory(''));
+    dispatch(setGender(''));
+    dispatch(setSpecies(''));
     dispatch(setPage(1));
   };
 
@@ -96,7 +89,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
-        location: selectedCity?._id || '',
+        locationId: selectedCity?._id || '',
         ...newSort,
       }),
     );
@@ -117,7 +110,7 @@ export default function Filters({ value, onChange }) {
         category: selectedCategory,
         sex: selectedSex,
         species: selectedSpecies,
-        location: selectedCity?._id || '',
+        locationId: selectedCity?._id || '',
         ...clearedSort,
       }),
     );
@@ -263,7 +256,13 @@ export default function Filters({ value, onChange }) {
         </div>
 
         {/* Search by city */}
-        <SearchFileLocation value={selectedCity} onChange={setSelectedCity} />
+        <SearchFileLocation
+          value={selectedCity}
+          onChange={(city) => {
+            dispatch(setCity(city));
+            dispatch(setPage(1));
+          }}
+        />
       </div>
 
       <div className={style.stickWrapper}>

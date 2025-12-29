@@ -13,8 +13,12 @@
 /* Desktop */
 @media screen and (min-width: 1280px) {
   .container {
-    justify-content: center;
   }
+}
+
+.logoNavWrapper {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -48,7 +52,6 @@
     display: flex;
     align-items: center;
     margin: 0 auto;
-    justify-content: center;
   }
 }
 
@@ -101,10 +104,22 @@
 @media screen and (min-width: 1280px) {
   .navWrapper {
     display: flex;
-    margin-left: auto;
+    margin-left: 313px;
   }
   .burgerBtn {
     display: none;
+  }
+}
+
+.rowAuth {
+  flex-direction: row !important;
+  margin-right: 8px;
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .rowAuth {
+    margin-right: 0;
   }
 }
 

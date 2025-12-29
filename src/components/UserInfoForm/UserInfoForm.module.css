@@ -64,19 +64,21 @@
   margin-bottom: 20px;
 }
 
-.inputWrapper {
+.infoWrapper {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-bottom: 40px;
+  max-width: 440px;
 }
 
 .text {
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 16px 200px 16px 16px;
-  width: 440px;
   height: 52px;
+  padding: 16px;
+  width: 100%;
+  max-width: 440px;
   box-sizing: border-box;
   transition: all 0.2s ease;
 }

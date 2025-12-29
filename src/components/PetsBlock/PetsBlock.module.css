@@ -1,6 +1,7 @@
 .btnTitleWrapper {
   display: flex;
   justify-content: space-between;
+  max-width: 440px;
 }
 
 .title {

@@ -1,21 +1,56 @@
 .container {
+  max-width: 375px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 16px 32px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 32px;
+  }
+}
+
+.profilePageHeader {
+  max-width: 1216px !important;
+}
+
+.wrapper {
+  max-width: 1216px;
+  margin: 0 auto;
   display: flex;
   gap: 32px;
-  padding: 32px;
-  width: 1153px;
+  box-sizing: border-box;
+  margin-top: 32px;
 }
 
 .leftContainer {
   position: relative;
-  border-radius: 60px;
   width: 520px;
-  height: 928px;
+  min-height: 928px;
   padding: 40px;
+  border-radius: 60px;
   background: #fff;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-.wrapperUserAvatar {
+.contentWrapper {
+  max-width: 440px;
+}
+
+.rightContainer {
+  margin-top: 40px;
 }
 
 .wrapperUser {
@@ -26,8 +61,9 @@
   background: #f6b83d;
 
   display: flex;
-  box-sizing: border-box;
   justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .textUser {
@@ -43,12 +79,8 @@
   width: 18px;
   height: 18px;
   fill: #fff;
-  stroke-width: 2px;
   stroke: #fff;
-}
-
-.rightContainer {
-  margin-top: 40px;
+  stroke-width: 2px;
 }
 
 .btnAddPet {
@@ -64,13 +96,14 @@
   line-height: 125%;
   letter-spacing: -0.03em;
   color: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   cursor: pointer;
   border: none;
   text-decoration: none;
-
-  display: flex;
-  box-sizing: border-box;
-  gap: 8px;
 }
 
 .btnAddPet:hover {
@@ -80,8 +113,8 @@
 .iconplus {
   width: 18px;
   height: 18px;
-  stroke-width: 1.5px;
   stroke: #fff;
+  stroke-width: 1.5px;
 }
 
 .btnContainer {
@@ -90,50 +123,12 @@
   margin-bottom: 32px;
 }
 
-.btnFavorites {
-  border-radius: 30px;
-  padding: 14px;
-  width: 142px;
-  height: 48px;
+@media screen and (max-width: 1279px) {
+  .wrapper {
+    flex-direction: column;
+  }
 
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
-  letter-spacing: -0.03em;
-  cursor: pointer;
-  border: none;
-}
-
-.btnFavorites:hover {
-  background: #f7d28f;
-}
-
-.btnViewed {
-  border-radius: 30px;
-  padding: 14px 45px;
-  width: 142px;
-  height: 48px;
-
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
-  letter-spacing: -0.03em;
-  cursor: pointer;
-  border: none;
-}
-
-.btnViewed:hover {
-  background: #fbe7c1;
-}
-
-.baseBtn {
-  background-color: #fff;
-  color: #262626;
-}
-
-.isActiveBtn {
-  background-color: #f6b83d;
-  color: #fff;
+  .leftContainer {
+    width: 100%;
+  }
 }

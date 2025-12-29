@@ -24,3 +24,55 @@
   color: #f6b83d;
   padding: 0 4px;
 }
+
+.btnContainer {
+  margin: 40px 0 32px 0;
+}
+
+.btnFavorites {
+  border-radius: 30px;
+  padding: 14px;
+  width: 142px;
+  height: 48px;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  border: none;
+}
+
+.btnFavorites:hover {
+  background: #f7d28f;
+}
+
+.btnViewed {
+  border-radius: 30px;
+  padding: 14px 45px;
+  width: 142px;
+  height: 48px;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  border: none;
+}
+
+.btnViewed:hover {
+  background: #fbe7c1;
+}
+
+.baseBtn {
+  background-color: #fff;
+  color: #262626;
+}
+
+.isActiveBtn {
+  background-color: #f6b83d;
+  color: #fff;
+}

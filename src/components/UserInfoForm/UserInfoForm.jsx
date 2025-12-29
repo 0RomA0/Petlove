@@ -30,7 +30,7 @@ export default function UserInfoForm() {
 
       <h3 className={style.title}>My information</h3>
 
-      <div className={style.inputWrapper}>
+      <div className={style.infoWrapper}>
         <p className={`${style.text} ${user.name ? style.textFilled : ''}`}>
           {user.name || '—'}
         </p>

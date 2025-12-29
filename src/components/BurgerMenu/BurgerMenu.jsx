@@ -1,9 +1,9 @@
 import Nav from '../Nav/Nav';
 import AuthNav from '../AuthNav/AuthNav';
-import UserNav from '../UserNav/UserNav';
 import style from './BurgerMenu.module.css';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import LogOutBtn from '../LogOutBtn/LogOutBtn';
 
 export default function BurgerMenu({ isOpen, onClose }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -19,8 +19,9 @@ export default function BurgerMenu({ isOpen, onClose }) {
           </svg>
         </button>
         <Nav />
-
-        {isLoggedIn ? <UserNav /> : <AuthNav />}
+        <div className={style.wrapperAuth}>
+          {isLoggedIn ? <LogOutBtn /> : <AuthNav />}
+        </div>
       </div>
     </div>
   );
